@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Items</h1>
+
+<%= link_to 'New Item', new_receipt_item_path(@receipt) %> |
+<%= link_to 'Receipts', receipts_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Receipt</th>
+      <th>Name</th>
+      <th>Cost</th>
+      <th>Qty</th>
+      <th>Type</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.receipt_id %></td>
+        <td><%= item.name %></td>
+        <td><%= item.cost %></td>
+        <td><%= item.qty %></td>
+        <td><%= item.item_type %></td>
+	<td>
+		<div class="el-button-group">
+			<%= link_to '', receipt_item_path(@receipt,item), class: "el-button el-button--info el-icon-tickets", type: :button %>
+			<%= link_to '', edit_receipt_item_path(@receipt,item), class: "el-button el-button--primary el-icon-edit", type: :button %>
+			<%= link_to '', receipt_item_path(@receipt,item), method: :delete, data: { confirm: 'Are you sure?' }, class: "el-button el-button--danger el-icon-delete", type: :button %>
+		</div>
+	</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

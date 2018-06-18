@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Receipts</h1>
+
+<%= link_to 'New Receipt', new_receipt_path %>
+<div id="receipts">
+  <table>
+
+    <thead>
+      <tr>
+        <th>Purchase date</th>
+        <th>Store</th>
+        <th>Tax</th>
+        <th>Total</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+	  <tr>
+		  <td>
+			  <input type="text" v-model="receipt.purchase_date"><br>
+		  </td>
+		  <td>
+			  <input type="text" v-model="receipt.store"><br>
+		  </td>
+		  <td>
+			  <input type="text" v-model="receipt.tax"><br>
+		  </td>
+		  <td>
+			  <input type="text" v-model="receipt.total"><br>
+		  </td>
+		  <td>
+			  <button @click="addReceipt" type="button" class="el-button el-button--success el-icon-plus"></button>
+		  </td>
+	  </tr>
+      <tr
+        is="receipt-row"
+        v-for="receipt in receipts"
+        :receipt="receipt">
+      </tr>
+    </tbody>
+  </table>
+</div>
+<%= render 'receipts/receipt_template' %>
+    <!-- <td>
+      <div class="el-button-group">
+        <%# link_to '', receipt, class: "el-button el-button--info el-icon-tickets", type: :button %>
+        <%# link_to '', edit_receipt_path(receipt), class: "el-button el-button--primary el-icon-edit", type: :button %>
+        <%# link_to '', receipt, method: :delete, data: { confirm: 'Are you sure?' }, class: "el-button el-button--danger el-icon-delete", type: :button %>
+      </div>
+    </td> -->

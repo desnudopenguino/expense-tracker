@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  receipt_id: 1
+  name: MyText
+  cost: 
+  qty: 1
+  type: MyText
+
+two:
+  receipt_id: 1
+  name: MyText
+  cost: 
+  qty: 1
+  type: MyText
