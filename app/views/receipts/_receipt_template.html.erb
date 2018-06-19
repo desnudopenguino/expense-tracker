@@ -1,16 +1,40 @@
-<script type="text/x-template" id="receipt-row">
-  <tr>
-    <td>{{ receipt.purchase_date }}</td>
-    <td>{{ receipt.store }}</td>
-    <td>{{ receipt.tax }}</td>
-    <td>{{ receipt.total }}</td>
-	<td>
-		<div class="el-button-group">
-			<button class="el-button el-button--info el-icon-tickets" type="button"></button>
-			<button class="el-button el-button--primary el-icon-edit" type="button"></button>
-			<button class="el-button el-button--danger el-icon-delete" type="button"></button>
-		</div>
-	</td>
-  </tr>
-</script>
+<template>
+	<el-table
+		:data="receipts"
+		:default-sort = "{prop: 'purchase_date', order: 'descending'}"
+		stripe
+		style="width: 100%">
+		<el-table-column
+			prop="purchase_date"
+			label="Purchase Date"
+			sortable
+			width="180">
+		</el-table-column>
+		<el-table-column
+			prop="store"
+			label="Store"
+			width="180">
+		</el-table-column>
+		<el-table-column
+			prop="tax"
+			label="Tax">
+		</el-table-column>
+		<el-table-column
+			prop="total"
+			label="Total">
+		</el-table-column>
 
+		<el-table-column
+			fixed="right"
+			label="Operations"
+			width="220">
+			<template slot-scope="scope">
+				<el-button-group>
+					<button class="el-button el-button--info el-icon-tickets" type="button"></button>
+					<button class="el-button el-button--primary el-icon-edit" type="button"></button>
+					<button class="el-button el-button--danger el-icon-delete" type="button"></button>
+				</el-button-group>
+			</template>
+		</el-table-column>
+	</el-table>
+</template>
