@@ -30,8 +30,18 @@ receipts = new Vue({
 				success: (res) ->
 					that.errors = {}
 					that.receipts.push(res);
+					that.$notify({
+						title: 'Success',
+						message: 'Receipt added.',
+						type: 'success'
+					});
 				error: (res) ->
 					that.errors = res.responseJSON.errors
+					that.$notify({
+						title: 'Error',
+						message: 'Please check the form fields',
+						type: 'error'
+					});
 					
 	}
 });
