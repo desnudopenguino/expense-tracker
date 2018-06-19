@@ -2,10 +2,8 @@
 
 <h1>Receipts</h1>
 
-<%= link_to 'New Receipt', new_receipt_path %>
 <div id="receipts">
   <table>
-
     <thead>
       <tr>
         <th>Purchase date</th>
@@ -19,19 +17,25 @@
     <tbody>
 	  <tr>
 		  <td>
-			  <input type="text" v-model="receipt.purchase_date"><br>
+			  <el-input placeholder="Purchase Date" v-model="receipt.purchase_date">
+			  </el-input>
 		  </td>
 		  <td>
-			  <input type="text" v-model="receipt.store"><br>
+			  <el-input placeholder="Store" v-model="receipt.store">
+			  </el-input>
 		  </td>
 		  <td>
-			  <input type="text" v-model="receipt.tax"><br>
+			  <el-input placeholder="Tax" v-model="receipt.tax">
+			  </el-input>
 		  </td>
 		  <td>
-			  <input type="text" v-model="receipt.total"><br>
+			  <el-input placeholder="Total" v-model="receipt.total">
+			  </el-input>
 		  </td>
 		  <td>
-			  <button @click="addReceipt" type="button" class="el-button el-button--success el-icon-plus"></button>
+			  <div class="el-button-group">
+				  <button @click="addReceipt" type="button" class="el-button el-button--success el-icon-plus"></button>
+			  </div>
 		  </td>
 	  </tr>
       <tr
@@ -41,12 +45,5 @@
       </tr>
     </tbody>
   </table>
+  <%= render 'receipts/receipt_template' %>
 </div>
-<%= render 'receipts/receipt_template' %>
-    <!-- <td>
-      <div class="el-button-group">
-        <%# link_to '', receipt, class: "el-button el-button--info el-icon-tickets", type: :button %>
-        <%# link_to '', edit_receipt_path(receipt), class: "el-button el-button--primary el-icon-edit", type: :button %>
-        <%# link_to '', receipt, method: :delete, data: { confirm: 'Are you sure?' }, class: "el-button el-button--danger el-icon-delete", type: :button %>
-      </div>
-    </td> -->
