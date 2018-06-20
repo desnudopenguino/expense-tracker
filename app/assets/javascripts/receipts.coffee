@@ -48,12 +48,12 @@ receipts = new Vue({
 			$.ajax '/receipts/' + receipt_id + '.json',
 				method: 'DELETE',
 				success: (res) ->
-					that.fetchReceipts();
 					that.$notify({
 						title: 'Success',
 						message: 'Receipt removed.',
 						type: 'success'
 					});
+					that.fetchReceipts();
 				error: (res) ->
 					that.errors = res.responseJSON.errors
 					that.$notify({
