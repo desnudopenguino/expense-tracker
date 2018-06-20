@@ -8,18 +8,18 @@ receipts = new Vue({
 	el: '#receipts',
 	data: {
 		receipts:[],
-		receipt: {
-			purchase_date: '',
-			store: '',
-			tax: 0.0,
-			total: 0.0,
-		}
+		receipt: {}
 	},
 	mounted: ->
-		that = this;
-		$.ajax '/receipts.json',
-			success: (res) -> that.receipts = res;
+		this.fetchReceipts()
 	methods: {
+		fetchReceipts: ->
+			that = this;
+			$.ajax '/receipts.json',
+				success: (res) ->
+					that.receipts = res;
+				error: (res) ->
+					that.errors = res.responseJSON.errors
 		addReceipt: ->
 			that = this;
 			$.ajax 'receipts.json',
@@ -42,6 +42,24 @@ receipts = new Vue({
 						message: 'Please check the form fields',
 						type: 'error'
 					});
-					
+		deleteReceipt: (receipt_id) ->
+			console.log(receipt_id);
+			that = this;
+			$.ajax '/receipts/' + receipt_id + '.json',
+				method: 'DELETE',
+				success: (res) ->
+					that.fetchReceipts();
+					that.$notify({
+						title: 'Success',
+						message: 'Receipt removed.',
+						type: 'success'
+					});
+				error: (res) ->
+					that.errors = res.responseJSON.errors
+					that.$notify({
+						title: 'Error',
+						message: 'Something went wrong',
+						type: 'error'
+					});
 	}
 });
