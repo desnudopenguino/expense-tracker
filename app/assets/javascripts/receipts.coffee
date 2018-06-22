@@ -1,9 +1,3 @@
-Vue.component('receipt-row', {
-	template: '#receipt-row',
-	props: {
-		receipt: Object
-	}
-})
 receipts = new Vue({
 	el: '#receipts',
 	data: {
@@ -29,12 +23,12 @@ receipts = new Vue({
 				},
 				success: (res) ->
 					that.errors = {}
-					that.receipts.push(res);
 					that.$notify({
 						title: 'Success',
 						message: 'Receipt added.',
 						type: 'success'
 					});
+					that.receipts.push(res);
 				error: (res) ->
 					that.errors = res.responseJSON.errors
 					that.$notify({
@@ -61,5 +55,8 @@ receipts = new Vue({
 						message: 'Something went wrong',
 						type: 'error'
 					});
+		viewReceipt: (receipt_id) ->
+			that=this;
+			window.location.href = '/receipts/' + receipt_id + '/items'
 	}
 });
