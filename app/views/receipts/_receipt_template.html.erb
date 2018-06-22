@@ -35,7 +35,7 @@
 			width="220">
 			<template slot-scope="props">
 				<el-button-group>
-					<button class="el-button el-button--info el-icon-tickets" type="button"></button>
+					<button @click="viewReceipt(props.row.id)" class="el-button el-button--info el-icon-tickets" type="button"></button>
 					<button class="el-button el-button--primary el-icon-edit" type="button"></button>
 					<button @click="deleteReceipt(props.row.id)" class="el-button el-button--danger el-icon-delete" type="button"></button>
 				</el-button-group>
