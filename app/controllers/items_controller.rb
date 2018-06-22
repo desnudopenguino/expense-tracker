@@ -6,6 +6,10 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
+	respond_to do |format|
+		format.html { render :index }
+		format.json { render :json => @items }
+	end
   end
 
   # GET /items/1
@@ -30,10 +34,10 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to receipt_items_path(@receipt), notice: 'Item was successfully created.' }
-        format.json { render :show, status: :created, location: @item }
+        # format.html { redirect_to receipt_items_path(@receipt), notice: 'Item was successfully created.' }
+        format.json { render :json => @item }
       else
-        format.html { render :new }
+        # format.html { render :new }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
