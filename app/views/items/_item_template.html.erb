@@ -1,0 +1,43 @@
+<template>
+	<el-table
+		:data="items"
+		stripe
+		style="width: 100%">
+		<el-table-column
+			prop="id"
+			label="ID"
+			width="40">
+		</el-table-column>
+		<el-table-column
+			prop="name"
+			label="Name"
+			width="180">
+		</el-table-column>
+		<el-table-column
+			prop="cost"
+			label="Cost"
+			width="180">
+		</el-table-column>
+		<el-table-column
+			prop="qty"
+			label="Qty">
+		</el-table-column>
+		<el-table-column
+			prop="item_type"
+			label="Type">
+		</el-table-column>
+
+		<el-table-column
+			fixed="right"
+			label="Operations"
+			width="220">
+			<template slot-scope="props">
+				<el-button-group>
+					<button @click="viewItem(props.row.id)" class="el-button el-button--info el-icon-tickets" type="button"></button>
+					<button class="el-button el-button--primary el-icon-edit" type="button"></button>
+					<button @click="deleteItem(props.row.receipt_id,props.row.id)" class="el-button el-button--danger el-icon-delete" type="button"></button>
+				</el-button-group>
+			</template>
+		</el-table-column>
+	</el-table>
+</template>
