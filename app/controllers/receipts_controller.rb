@@ -5,7 +5,7 @@ class ReceiptsController < ApplicationController
   # GET /receipts.json
   def index
 	respond_to do |format|
-        format.html { render :index }
+		format.html { render :index }
 		format.json { render :json => Receipt.all.order(purchase_date: :desc) }
 	end
   end
