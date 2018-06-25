@@ -8,9 +8,9 @@ items = new Vue({
 		this.fetchItems()
 	methods: {
 		fetchItems: ->
+			that = this;
 			url_split = window.location.href.split('/');
 			receipt_id = url_split[4];
-			that = this;
 			$.ajax '/receipts/' + receipt_id + '/items.json',
 				success: (res) ->
 					that.items = res;
@@ -18,7 +18,9 @@ items = new Vue({
 					that.errors = res.responseJSON.errors
 		addItem: ->
 			that = this;
-			$.ajax 'items.json',
+			url_split = window.location.href.split('/');
+			receipt_id = url_split[4];
+			$.ajax '/receipts/' + receipt_id + '/items.json',
 				method: 'POST',
 				data: {
 					item: that.item,
@@ -26,8 +28,7 @@ items = new Vue({
 				success: (res) ->
 					that.errors = {}
 					that.$notify({
-						title: 'Success',
-						message: 'Item added.',
+						title: 'Item Added',
 						type: 'success'
 					});
 					that.items.push(res);
@@ -45,8 +46,7 @@ items = new Vue({
 				method: 'DELETE',
 				success: (res) ->
 					that.$notify({
-						title: 'Success',
-						message: 'Item removed.',
+						title: 'Item Removed',
 						type: 'success'
 					});
 					that.fetchItems();
@@ -57,8 +57,26 @@ items = new Vue({
 						message: 'Something went wrong',
 						type: 'error'
 					});
-		viewItem: (item_id) ->
-			that=this;
-			window.location.href = '/items/' + item_id + '/items'
+		updateItem: (item_obj) ->
+			that = this;
+			$.ajax '/receipts/' + item_obj.receipt_id + '/items/' + item_obj.id + '.json',
+				method: 'PUT',
+				data: {
+					item: item_obj,
+				},
+				success: (res) ->
+					that.$notify({
+						title: 'Item Updated',
+						type: 'success'
+					});
+					that.errors = {}
+					that.item = res
+				error: (res) ->
+					that.errors = res.responseJSON.errors
+					that.$notify({
+						title: 'Error',
+						message: 'Something went wrong',
+						type: 'error'
+					});
 	}
 });
