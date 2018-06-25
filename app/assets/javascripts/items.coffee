@@ -6,12 +6,6 @@ items = new Vue({
 	},
 	mounted: ->
 		this.fetchItems()
-	computed: ->
-		subtotalRow: ->
-			console.log(item)
-			that = this;
-			item.cost * item.qty;
-		
 	methods: {
 		fetchItems: ->
 			that = this;
