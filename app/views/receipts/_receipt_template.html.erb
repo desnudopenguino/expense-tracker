@@ -9,19 +9,35 @@
 			label="Purchase Date"
 			sortable
 			width="180">
+			<template slot-scope="scope">
+				<el-input placeholder="Purchase Date" v-model="scope.row.purchase_date">
+				</el-input>
+			</template>
 		</el-table-column>
 		<el-table-column
 			prop="store"
 			label="Store"
 			width="180">
+			<template slot-scope="scope">
+				<el-input placeholder="Store" v-model="scope.row.store">
+				</el-input>
+			</template>
 		</el-table-column>
 		<el-table-column
 			prop="tax"
 			label="Tax">
+			<template slot-scope="scope">
+				<el-input placeholder="Tax" v-model="scope.row.tax">
+				</el-input>
+			</template>
 		</el-table-column>
 		<el-table-column
 			prop="total"
 			label="Total">
+			<template slot-scope="scope">
+				<el-input placeholder="Total" v-model="scope.row.total">
+				</el-input>
+			</template>
 		</el-table-column>
 
 		<el-table-column
@@ -31,7 +47,7 @@
 			<template slot-scope="props">
 				<el-button-group>
 					<button @click="viewReceipt(props.row.id)" class="el-button el-button--info el-icon-tickets" type="button"></button>
-					<button class="el-button el-button--primary el-icon-edit" type="button"></button>
+					<button @click="updateReceipt(props.row)" class="el-button el-button--primary el-icon-edit" type="button"></button>
 					<button @click="deleteReceipt(props.row.id)" class="el-button el-button--danger el-icon-delete" type="button"></button>
 				</el-button-group>
 			</template>

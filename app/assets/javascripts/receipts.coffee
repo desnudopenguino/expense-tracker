@@ -2,7 +2,7 @@ receipts = new Vue({
 	el: '#receipts',
 	data: {
 		receipts:[],
-		receipt: {}
+		receipt: {},
 	},
 	mounted: ->
 		this.fetchReceipts()
@@ -16,7 +16,7 @@ receipts = new Vue({
 					that.errors = res.responseJSON.errors
 		addReceipt: ->
 			that = this;
-			$.ajax 'receipts.json',
+			$.ajax '/receipts.json',
 				method: 'POST',
 				data: {
 					receipt: that.receipt,
@@ -37,7 +37,6 @@ receipts = new Vue({
 						type: 'error'
 					});
 		deleteReceipt: (receipt_id) ->
-			console.log(receipt_id);
 			that = this;
 			$.ajax '/receipts/' + receipt_id + '.json',
 				method: 'DELETE',
@@ -55,6 +54,30 @@ receipts = new Vue({
 						message: 'Something went wrong',
 						type: 'error'
 					});
+		
+		updateReceipt: (receipt_obj) ->
+			that = this;
+			$.ajax '/receipts/' + receipt_obj.id + '.json',
+				method: 'PUT',
+				data: {
+					receipt: receipt_obj,
+				},
+				success: (res) ->
+					that.$notify({
+						title: 'Success',
+						message: 'Receipt updated.',
+						type: 'success'
+					});
+					that.errors = {}
+					that.receipt = res
+				error: (res) ->
+					that.errors = res.responseJSON.errors
+					that.$notify({
+						title: 'Error',
+						message: 'Something went wrong',
+						type: 'error'
+					});
+			
 		viewReceipt: (receipt_id) ->
 			that=this;
 			window.location.href = '/receipts/' + receipt_id + '/items'
