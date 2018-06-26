@@ -13,6 +13,10 @@ class ReceiptsController < ApplicationController
   # GET /receipts/1
   # GET /receipts/1.json
   def show
+	respond_to do |format|
+		format.html { render :show }
+		format.json { render :json => @receipt }
+	end
   end
 
   # GET /receipts/new
@@ -45,7 +49,7 @@ class ReceiptsController < ApplicationController
     respond_to do |format|
       if @receipt.update(receipt_params)
         format.html { redirect_to @receipt, notice: 'Receipt was successfully updated.' }
-        format.json { render :show, status: :ok, location: @receipt }
+        format.json { render :json => @receipt }
       else
         format.html { render :edit }
         format.json { render json: @receipt.errors, status: :unprocessable_entity }
@@ -66,7 +70,7 @@ class ReceiptsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_receipt
-      @receipt = Receipt.find(params[:id])
+      @receipt = Receipt.find_by(id: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
