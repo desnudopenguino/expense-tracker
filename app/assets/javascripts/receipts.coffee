@@ -80,6 +80,6 @@ receipts = new Vue({
 			
 		viewReceipt: (receipt_id) ->
 			that=this;
-			window.location.href = '/receipts/' + receipt_id + '/items'
+			window.location.href = '/receipts/' + receipt_id
 	}
 });
