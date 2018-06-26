@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:edit, :update, :destroy]
   before_action :set_receipt
   before_action :receipt_items, only: [:index, :create, :update, :destroy]
 
@@ -12,20 +12,6 @@ class ItemsController < ApplicationController
 	end
   end
 
-  # GET /items/1
-  # GET /items/1.json
-  def show
-  end
-
-  # GET /items/new
-  def new
-    @item = Item.new(:receipt => @receipt)
-  end
-
-  # GET /items/1/edit
-  def edit
-  end
-
   # POST /items
   # POST /items.json
   def create
@@ -34,10 +20,8 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        # format.html { redirect_to receipt_items_path(@receipt), notice: 'Item was successfully created.' }
         format.json { render :json => @item }
       else
-        # format.html { render :new }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
@@ -48,10 +32,8 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to receipt_items_path @receipt, notice: 'Item was successfully updated.' }
         format.json { render :json => @item }
       else
-        format.html { render :edit }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
@@ -62,7 +44,6 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     respond_to do |format|
-      format.html { redirect_to receipt_items_url @receipt, notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
