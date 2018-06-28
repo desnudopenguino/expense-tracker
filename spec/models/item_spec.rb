@@ -5,6 +5,7 @@ RSpec.describe Item, type: :model do
 	it { should validate_presence_of(:cost) }
 	it { should validate_presence_of(:qty) }
 	it { should validate_presence_of(:receipt_id) }
+	it { should belong_to(:receipt) }
 	it "checks if name is a String" do
 		item = build(:item)
 		expect(item[:name]).to be_a(String)
