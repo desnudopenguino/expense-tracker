@@ -4,6 +4,7 @@ RSpec.describe Receipt, type: :model do
 	it { should validate_presence_of(:store) }
 	it { should validate_presence_of(:tax) }
 	it { should validate_presence_of(:total) }
+	it { should have_many(:items) }
 	it "checks if purchase_date is a DateTime" do
 		rec = create(:receipt)
 		expect(DateTime.parse(rec[:purchase_date])).to be_a(DateTime)
@@ -19,5 +20,13 @@ RSpec.describe Receipt, type: :model do
 	it "checks if total is a Float" do
 		rec = create(:receipt)
 		expect(rec[:total]).to be_a(Float)
+	end
+	it "checks if delete cascades to items in a receipt" do
+		rec = create(:receipt)
+		for i in 1..3 do
+			create(:item, name: "Item #{i}", receipt: rec)
+		end
+		rec.destroy
+		expect(Item.count).to be(0)
 	end
 end
