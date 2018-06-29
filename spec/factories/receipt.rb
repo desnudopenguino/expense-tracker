@@ -13,6 +13,5 @@ FactoryBot.define do
 		qty		2
 		receipt
 	end
-
 end
 
