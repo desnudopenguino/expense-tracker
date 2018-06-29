@@ -21,5 +21,12 @@ RSpec.describe Receipt, type: :model do
 		rec = create(:receipt)
 		expect(rec[:total]).to be_a(Float)
 	end
-
+	it "checks if delete cascades to items in a receipt" do
+		rec = create(:receipt)
+		for i in 1..3 do
+			create(:item, name: "Item #{i}", receipt: rec)
+		end
+		rec.destroy
+		expect(Item.count).to be(0)
+	end
 end
