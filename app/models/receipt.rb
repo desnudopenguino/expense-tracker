@@ -1,5 +1,5 @@
 class Receipt < ApplicationRecord
-    has_many :items
+    has_many :items, dependent: :delete_all
 
     validates :total, presence: true
     validates :tax, presence: true
