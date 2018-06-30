@@ -40,7 +40,6 @@ items = new Vue({
 						type: 'error'
 					});
 		deleteItem: (receipt_id,item_id) ->
-			console.log(item_id);
 			that = this;
 			$.ajax '/receipts/' + receipt_id + '/items/' + item_id + '.json',
 				method: 'DELETE',
@@ -70,9 +69,9 @@ items = new Vue({
 						type: 'success'
 					});
 					that.errors = {}
-					that.item = res
+					that.fetchItems()
 				error: (res) ->
-					that.errors = res.responseJSON.errors
+					that.errors = res.responseJSON
 					that.$notify({
 						title: 'Error',
 						message: 'Something went wrong',

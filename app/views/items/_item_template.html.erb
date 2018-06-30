@@ -38,6 +38,14 @@
 			</template>
 		</el-table-column>
 		<el-table-column
+			prop="total_cost"
+			label="Total">
+			<template slot-scope="scope">
+				<el-input :disabled="true" placeholder="Total" v-model="scope.row.total_cost">
+				</el-input>
+			</template>
+		</el-table-column>
+		<el-table-column
 			fixed="right"
 			label="Operations"
 			width="220">

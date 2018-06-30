@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
   def index
 	respond_to do |format|
 		format.html { render :index }
-		format.json { render :json => @items }
+		format.json { render :json => @items.to_json(methods: [:total_cost]) }
 	end
   end
 
@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.json { render :json => @item }
+        format.json { render :json => @item.to_json(methods: [:total_cost])  }
       else
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
@@ -32,7 +32,7 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.json { render :json => @item }
+        format.json { render :json => @item.to_json(methods: [:total_cost])  }
       else
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end

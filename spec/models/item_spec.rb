@@ -26,4 +26,8 @@ RSpec.describe Item, type: :model do
 		item = build(:item)
 		expect(item[:receipt_id]).to be_a(Integer)
 	end
+	it "checks if total_cost = unit cost * quantity" do
+		item = build(:item)
+		expect(item.total_cost).to eq(item[:cost] * item[:qty])
+	end
 end
