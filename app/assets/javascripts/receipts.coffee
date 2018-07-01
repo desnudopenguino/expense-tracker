@@ -29,6 +29,7 @@ receipts = new Vue({
 						type: 'success'
 					});
 					that.receipts.push(res);
+					that.receipt = {}
 				error: (res) ->
 					that.errors = res.responseJSON.errors
 					that.$notify({
@@ -69,7 +70,6 @@ receipts = new Vue({
 						type: 'success'
 					});
 					that.errors = {}
-					that.receipt = res
 				error: (res) ->
 					that.errors = res.responseJSON.errors
 					that.$notify({
