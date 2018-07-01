@@ -10,7 +10,7 @@
 			sortable
 			width="180">
 			<template slot-scope="scope">
-				<el-input placeholder="Purchase Date" v-model="scope.row.purchase_date">
+				<el-date-picker type="datetime" value-format="yyyy-MM-d HH:mm:ss" placeholder="Purchase Date" v-model="scope.row.purchase_date">
 				</el-input>
 			</template>
 		</el-table-column>
