@@ -32,6 +32,7 @@ items = new Vue({
 						type: 'success'
 					});
 					that.items.push(res);
+					that.item = {}
 				error: (res) ->
 					that.errors = res.responseJSON.errors
 					that.$notify({
