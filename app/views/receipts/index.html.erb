@@ -3,42 +3,5 @@
 <h1>Receipts</h1>
 
 <div id="receipts">
-  <table>
-    <thead>
-      <tr>
-        <th>Purchase date</th>
-        <th>Store</th>
-        <th>Tax</th>
-        <th>Total</th>
-        <th></th>
-      </tr>
-    </thead>
-
-    <tbody>
-	  <tr>
-		  <td>
-			  <el-date-picker type="datetime" value-format="yyyy-MM-d HH:mm:ss" placeholder="Purchase Date" v-model="receipt.purchase_date">
-			  </el-input>
-		  </td>
-		  <td>
-			  <el-input placeholder="Store" v-model="receipt.store">
-			  </el-input>
-		  </td>
-		  <td>
-			  <el-input placeholder="Tax" v-model="receipt.tax">
-			  </el-input>
-		  </td>
-		  <td>
-			  <el-input placeholder="Total" v-model="receipt.total">
-			  </el-input>
-		  </td>
-		  <td>
-			  <div class="el-button-group">
-				  <button @click="addReceipt" type="button" class="el-button el-button--success el-icon-plus"></button>
-			  </div>
-		  </td>
-	  </tr>
-    </tbody>
-  </table>
   <%= render 'receipts/receipt_template' %>
 </div>
