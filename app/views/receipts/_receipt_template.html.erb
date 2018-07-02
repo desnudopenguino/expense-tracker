@@ -1,4 +1,3 @@
-<template>
 	<el-table
 		:data="receipts"
 		:default-sort = "{prop: 'purchase_date', order: 'descending'}"
@@ -10,9 +9,9 @@
 			sortable
 			width="180">
 			<template slot-scope="scope">
-				<el-date-picker v-if="scope.row.id != undefined" type="datetime" value-format="yyyy-MM-d HH:mm:ss" placeholder="Purchase Date" v-model="scope.row.purchase_date">
+				<el-date-picker v-if="scope.row.id != undefined" type="datetime" value-format="yyyy-MM-d HH:mm:ss" placeholder="Purchase Date" v-model="scope.row.purchase_date" @keyup.enter.native="updateReceipt(scope.row)">
 				</el-date-picker>
-				<el-date-picker v-else type="datetime" value-format="yyyy-MM-d HH:mm:ss" placeholder="Purchase Date" v-model="receipt.purchase_date">
+				<el-date-picker v-else type="datetime" value-format="yyyy-MM-d HH:mm:ss" placeholder="Purchase Date" v-model="receipt.purchase_date" @keyup.enter.native="addReceipt">
 				</el-date-picker>
 			</template>
 		</el-table-column>
@@ -21,9 +20,9 @@
 			label="Store"
 			width="180">
 			<template slot-scope="scope">
-				<el-input v-if="scope.row.id != undefined" placeholder="Store" v-model="scope.row.store">
+				<el-input v-if="scope.row.id != undefined" placeholder="Store" v-model="scope.row.store" @keyup.enter.native="updateReceipt(scope.row)">
 				</el-input>
-				<el-input v-else placeholder="Store" v-model="receipt.store">
+				<el-input v-else placeholder="Store" v-model="receipt.store" @keyup.enter.native="addReceipt">
 				</el-input>
 			</template>
 		</el-table-column>
@@ -31,9 +30,9 @@
 			prop="tax"
 			label="Tax">
 			<template slot-scope="scope">
-				<el-input v-if="scope.row.id != undefined" placeholder="Tax" v-model="scope.row.tax">
+				<el-input v-if="scope.row.id != undefined" placeholder="Tax" v-model="scope.row.tax" @keyup.enter.native="updateReceipt(scope.row)">
 				</el-input>
-				<el-input v-else placeholder="Tax" v-model="receipt.tax">
+				<el-input v-else placeholder="Tax" v-model="receipt.tax" @keyup.enter.native="addReceipt">
 				</el-input>
 			</template>
 		</el-table-column>
@@ -41,9 +40,9 @@
 			prop="total"
 			label="Total">
 			<template slot-scope="scope">
-				<el-input v-if="scope.row.id != undefined" placeholder="Total" v-model="scope.row.total">
+				<el-input v-if="scope.row.id != undefined" placeholder="Total" v-model="scope.row.total" @keyup.enter.native="updateReceipt(scope.row)">
 				</el-input>
-				<el-input v-else placeholder="Total" v-model="receipt.total">
+				<el-input v-else placeholder="Total" v-model="receipt.total" @keyup.enter.native="addReceipt">
 				</el-input>
 			</template>
 		</el-table-column>
