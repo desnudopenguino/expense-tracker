@@ -19,19 +19,19 @@
   <tbody>
 	  <tr>
 		  <td>
-			  <el-input placeholder="Item Name" v-model="item.name">
+			  <el-input type="text" placeholder="Item Name" v-model="item.name">
 			  </el-input>
 		  </td>
 		  <td>
-			  <el-input placeholder="Cost" v-model="item.cost">
+			  <el-input type="text" placeholder="Cost" v-model="item.cost">
 			  </el-input>
 		  </td>
 		  <td>
-			  <el-input placeholder="Qty." v-model="item.qty">
+			  <el-input type="text" placeholder="Qty." v-model="item.qty">
 			  </el-input>
 		  </td>
 		  <td>
-			  <el-input placeholder="Item Type" v-model="item.item_type">
+			  <el-input type="text" placeholder="Item Type" v-model="item.item_type">
 			  </el-input>
 		  </td>
 		  <td>
@@ -44,4 +44,3 @@
 </table>
 	<%= render 'items/item_template' %>
 </div>
-
