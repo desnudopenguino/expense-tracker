@@ -7,6 +7,9 @@ items = new Vue({
 	mounted: ->
 		this.fetchItems()
 	methods: {
+		resetFocus: ->
+			input = document.getElementsByTagName("input")[0]
+			input.focus()	
 		fetchItems: ->
 			that = this;
 			url_split = window.location.href.split('/');
@@ -33,6 +36,7 @@ items = new Vue({
 					});
 					that.items.push(res);
 					that.item = {}
+					that.resetFocus()
 				error: (res) ->
 					that.errors = res.responseJSON.errors
 					that.$notify({
@@ -40,6 +44,7 @@ items = new Vue({
 						message: 'Please check the form fields',
 						type: 'error'
 					});
+					that.resetFocus()
 		deleteItem: (receipt_id,item_id) ->
 			that = this;
 			$.ajax '/receipts/' + receipt_id + '/items/' + item_id + '.json',
