@@ -18,7 +18,9 @@ items = new Vue({
 			receipt_id = url_split[4];
 			$.ajax '/receipts/' + receipt_id + '/items.json',
 				success: (res) ->
-					that.items = res;
+					that.items = []
+					that.items.push.apply(that.items,[{}]);
+					that.items.push.apply(that.items,res);
 				error: (res) ->
 					that.errors = res.responseJSON.errors
 		fetchReceipt: ->
