@@ -11,7 +11,9 @@ receipts = new Vue({
 			that = this;
 			$.ajax '/receipts.json',
 				success: (res) ->
-					that.receipts = res;
+					that.receipts = []
+					that.receipts.push.apply(that.receipts,[{}]);
+					that.receipts.push.apply(that.receipts,res);
 				error: (res) ->
 					that.errors = res.responseJSON.errors
 		addReceipt: ->
