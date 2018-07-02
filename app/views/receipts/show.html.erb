@@ -53,5 +53,10 @@
   </tbody>
 </table>
 	<%= render 'items/item_template' %>
+	<div>{{ receipt.subtotal }}</div>
+	<div>{{ receipt.tax }}</div>
+	<div>{{ receipt.total }}</div>
+	<div v-if="receipt.check_total">Valid!</div>
+	<div v-else>Invalid!</div>
 </div>
 
