@@ -15,7 +15,7 @@ class ReceiptsController < ApplicationController
   def show
 	respond_to do |format|
 		format.html { render :show }
-		format.json { render :json => @receipt }
+		format.json { render :json => @receipt.to_json(methods: [:check_total,:subtotal]) }
 	end
   end
   

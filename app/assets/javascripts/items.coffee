@@ -2,10 +2,12 @@ items = new Vue({
 	el: '#items',
 	data: {
 		items:[],
-		item: {}
+		item: {},
+		receipt: {}
 	},
 	mounted: ->
 		this.fetchItems()
+		this.fetchReceipt()
 	methods: {
 		resetFocus: ->
 			input = document.getElementsByTagName("input")[0]
@@ -17,6 +19,15 @@ items = new Vue({
 			$.ajax '/receipts/' + receipt_id + '/items.json',
 				success: (res) ->
 					that.items = res;
+				error: (res) ->
+					that.errors = res.responseJSON.errors
+		fetchReceipt: ->
+			that = this;
+			url_split = window.location.href.split('/');
+			receipt_id = url_split[4];
+			$.ajax '/receipts/' + receipt_id + '.json',
+				success: (res) ->
+					that.receipt = res;
 				error: (res) ->
 					that.errors = res.responseJSON.errors
 		addItem: ->
@@ -37,6 +48,7 @@ items = new Vue({
 					that.items.push(res);
 					that.item = {}
 					that.resetFocus()
+					that.fetchReceipt()
 				error: (res) ->
 					that.errors = res.responseJSON.errors
 					that.$notify({
@@ -55,6 +67,7 @@ items = new Vue({
 						type: 'success'
 					});
 					that.fetchItems();
+					that.fetchReceipt()
 				error: (res) ->
 					that.errors = res.responseJSON.errors
 					that.$notify({
@@ -76,6 +89,7 @@ items = new Vue({
 					});
 					that.errors = {}
 					that.fetchItems()
+					that.fetchReceipt()
 				error: (res) ->
 					that.errors = res.responseJSON
 					that.$notify({

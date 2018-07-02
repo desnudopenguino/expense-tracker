@@ -26,4 +26,8 @@ RSpec.describe Receipt, type: :model do
 		rec.destroy
 		expect(Item.count).to be(0)
 	end
+	it "checks if subtotal + tax = total" do
+		rec = create(:receipt_with_items)
+		expect(rec.check_total).to be(true)
+	end
 end
