@@ -10,8 +10,10 @@
 			sortable
 			width="180">
 			<template slot-scope="scope">
-				<el-date-picker type="datetime" value-format="yyyy-MM-d HH:mm:ss" placeholder="Purchase Date" v-model="scope.row.purchase_date">
-				</el-input>
+				<el-date-picker v-if="scope.row.id != undefined" type="datetime" value-format="yyyy-MM-d HH:mm:ss" placeholder="Purchase Date" v-model="scope.row.purchase_date">
+				</el-date-picker>
+				<el-date-picker v-else type="datetime" value-format="yyyy-MM-d HH:mm:ss" placeholder="Purchase Date" v-model="receipt.purchase_date">
+				</el-date-picker>
 			</template>
 		</el-table-column>
 		<el-table-column
@@ -19,7 +21,9 @@
 			label="Store"
 			width="180">
 			<template slot-scope="scope">
-				<el-input placeholder="Store" v-model="scope.row.store">
+				<el-input v-if="scope.row.id != undefined" placeholder="Store" v-model="scope.row.store">
+				</el-input>
+				<el-input v-else placeholder="Store" v-model="receipt.store">
 				</el-input>
 			</template>
 		</el-table-column>
@@ -27,7 +31,9 @@
 			prop="tax"
 			label="Tax">
 			<template slot-scope="scope">
-				<el-input placeholder="Tax" v-model="scope.row.tax">
+				<el-input v-if="scope.row.id != undefined" placeholder="Tax" v-model="scope.row.tax">
+				</el-input>
+				<el-input v-else placeholder="Tax" v-model="receipt.tax">
 				</el-input>
 			</template>
 		</el-table-column>
@@ -35,7 +41,9 @@
 			prop="total"
 			label="Total">
 			<template slot-scope="scope">
-				<el-input placeholder="Total" v-model="scope.row.total">
+				<el-input v-if="scope.row.id != undefined" placeholder="Total" v-model="scope.row.total">
+				</el-input>
+				<el-input v-else placeholder="Total" v-model="receipt.total">
 				</el-input>
 			</template>
 		</el-table-column>
@@ -45,10 +53,14 @@
 			label="Operations"
 			width="220">
 			<template slot-scope="props">
-				<el-button-group>
+				<el-button-group v-if="props.row.id != undefined">
 					<button @click="viewReceipt(props.row.id)" class="el-button el-button--info el-icon-tickets" type="button"></button>
 					<button @click="updateReceipt(props.row)" class="el-button el-button--primary el-icon-edit" type="button"></button>
 					<button @click="deleteReceipt(props.row.id)" class="el-button el-button--danger el-icon-delete" type="button"></button>
+				</el-button-group>
+				<el-button-group v-else>
+
+					<button @click="addReceipt" type="button" class="el-button el-button--success el-icon-plus"></button>
 				</el-button-group>
 			</template>
 		</el-table-column>
