@@ -8,7 +8,9 @@
 			label="Name"
 			width="180">
 			<template slot-scope="scope">
-				<el-input placeholder="Name" v-model="scope.row.name">
+				<el-input v-if="scope.row.id != undefined" placeholder="Item Name" v-model="scope.row.name">
+				</el-input>
+				<el-input v-else placeholder="Item Name" v-model="item.name">
 				</el-input>
 			</template>
 		</el-table-column>
@@ -16,7 +18,9 @@
 			prop="item_type"
 			label="Type">
 			<template slot-scope="scope">
-				<el-input placeholder="Item Type" v-model="scope.row.item_type">
+				<el-input v-if="scope.row.id != undefined" placeholder="Item Type" v-model="scope.row.item_type">
+				</el-input>
+				<el-input v-else placeholder="Item Type" v-model="item.item_type">
 				</el-input>
 			</template>
 		</el-table-column>
@@ -25,7 +29,9 @@
 			label="Cost"
 			width="180">
 			<template slot-scope="scope">
-				<el-input placeholder="Cost" v-model="scope.row.cost">
+				<el-input v-if="scope.row.id != undefined" placeholder="Cost" v-model="scope.row.cost">
+				</el-input>
+				<el-input v-else placeholder="Cost" v-model="item.cost">
 				</el-input>
 			</template>
 		</el-table-column>
@@ -33,7 +39,9 @@
 			prop="qty"
 			label="Qty">
 			<template slot-scope="scope">
-				<el-input placeholder="Qty" v-model="scope.row.qty">
+				<el-input v-if="scope.row.id != undefined" placeholder="Qty" v-model="scope.row.qty">
+				</el-input>
+				<el-input v-else placeholder="Qty." v-model="item.qty">
 				</el-input>
 			</template>
 		</el-table-column>
@@ -41,19 +49,23 @@
 			prop="total_cost"
 			label="Total">
 			<template slot-scope="scope">
-				<el-input :disabled="true" placeholder="Total" v-model="scope.row.total_cost">
+				<el-input v-if="scope.row.id != undefined" :disabled="true" placeholder="Total" v-model="scope.row.total_cost">
 				</el-input>
 			</template>
 		</el-table-column>
-		<el-table-column
+		<el-table-column 
 			fixed="right"
 			label="Operations"
 			width="220">
 			<template slot-scope="props">
-				<el-button-group>
+				<el-button-group v-if="props.row.id != undefined">
 					<button @click="updateItem(props.row)" class="el-button el-button--primary el-icon-edit" type="button"></button>
 					<button @click="deleteItem(props.row.receipt_id,props.row.id)" class="el-button el-button--danger el-icon-delete" type="button"></button>
 				</el-button-group>
+				<el-button-group v-else>
+					<button @click="addItem" type="button" class="el-button el-button--success el-icon-plus"></button>
+				</el-button-group>
+			</template>
 			</template>
 		</el-table-column>
 	</el-table>
