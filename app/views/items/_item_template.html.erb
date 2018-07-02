@@ -8,9 +8,9 @@
 			label="Name"
 			width="180">
 			<template slot-scope="scope">
-				<el-input v-if="scope.row.id != undefined" placeholder="Item Name" v-model="scope.row.name">
+				<el-input v-if="scope.row.id != undefined" placeholder="Item Name" v-model="scope.row.name" @keyup.enter.native="updateItem(scope.row)">
 				</el-input>
-				<el-input v-else placeholder="Item Name" v-model="item.name">
+				<el-input v-else placeholder="Item Name" v-model="item.name" @keyup.enter.native="addItem">
 				</el-input>
 			</template>
 		</el-table-column>
@@ -18,9 +18,9 @@
 			prop="item_type"
 			label="Type">
 			<template slot-scope="scope">
-				<el-input v-if="scope.row.id != undefined" placeholder="Item Type" v-model="scope.row.item_type">
+				<el-input v-if="scope.row.id != undefined" placeholder="Item Type" v-model="scope.row.item_type" @keyup.enter.native="updateItem(scope.row)">
 				</el-input>
-				<el-input v-else placeholder="Item Type" v-model="item.item_type">
+				<el-input v-else placeholder="Item Type" v-model="item.item_type" @keyup.enter.native="addItem">
 				</el-input>
 			</template>
 		</el-table-column>
@@ -29,9 +29,9 @@
 			label="Cost"
 			width="180">
 			<template slot-scope="scope">
-				<el-input v-if="scope.row.id != undefined" placeholder="Cost" v-model="scope.row.cost">
+				<el-input v-if="scope.row.id != undefined" placeholder="Cost" v-model="scope.row.cost" @keyup.enter.native="updateItem(scope.row)">
 				</el-input>
-				<el-input v-else placeholder="Cost" v-model="item.cost">
+				<el-input v-else placeholder="Cost" v-model="item.cost" @keyup.enter.native="addItem">
 				</el-input>
 			</template>
 		</el-table-column>
@@ -39,9 +39,9 @@
 			prop="qty"
 			label="Qty">
 			<template slot-scope="scope">
-				<el-input v-if="scope.row.id != undefined" placeholder="Qty" v-model="scope.row.qty">
+				<el-input v-if="scope.row.id != undefined" placeholder="Qty" v-model="scope.row.qty" @keyup.enter.native="updateItem(scope.row)">
 				</el-input>
-				<el-input v-else placeholder="Qty." v-model="item.qty">
+				<el-input v-else placeholder="Qty." v-model="item.qty" @keyup.enter.native="addItem">
 				</el-input>
 			</template>
 		</el-table-column>
