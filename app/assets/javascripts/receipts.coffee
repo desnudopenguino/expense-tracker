@@ -26,8 +26,7 @@ receipts = new Vue({
 				success: (res) ->
 					that.errors = {}
 					that.$notify({
-						title: 'Success',
-						message: 'Receipt added.',
+						title: 'Receipt Added',
 						type: 'success'
 					});
 					that.receipts.push(res);
@@ -45,8 +44,7 @@ receipts = new Vue({
 				method: 'DELETE',
 				success: (res) ->
 					that.$notify({
-						title: 'Success',
-						message: 'Receipt removed.',
+						title: 'Receipt Removed',
 						type: 'success'
 					});
 					that.fetchReceipts();
@@ -67,8 +65,7 @@ receipts = new Vue({
 				},
 				success: (res) ->
 					that.$notify({
-						title: 'Success',
-						message: 'Receipt updated.',
+						title: 'Receipt Updated',
 						type: 'success'
 					});
 					that.errors = {}
