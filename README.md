@@ -1,24 +1,15 @@
-# README
+# Desnudopenguino's Expense Tracker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simple CRUD web application to collect receipt info for tracking expenses.
 
-Things you may want to cover:
+### Dependencies:
+- sqlite
+- ruby 2.4.1
+- rails 5.2.0
+- node
+- (more to come as I complete this README)
 
-* Ruby version
+### Notes
+So This is just one part of two for the tool. The second part is [MetaBase](https://github.com/metabase/metabase). MetaBase is a tool that allows you to build a collection of queries to view your data in nice formatted ways. I figured there is no point in reinventing the wheel of viewing and analyzing the data if I didn't have to. To handle running both a rails instance and a MetaBase instance, the rails instance is set up to run on port 3001. MetaBase runs on port 3000. 
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This instance was meant to be run on a local/home machine, thus the use of sqlite and no user authentication and authorization. 
