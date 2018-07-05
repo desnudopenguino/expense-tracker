@@ -16,7 +16,7 @@ items = new Vue({
 			that = this;
 			url_split = window.location.href.split('/');
 			receipt_id = url_split[4];
-			$.ajax '/api/receipts/' + receipt_id + '/items.json',
+			$.ajax '/api/receipts/' + receipt_id + '/items',
 				success: (res) ->
 					that.items = []
 					that.items.push.apply(that.items,[{}]);
@@ -27,7 +27,7 @@ items = new Vue({
 			that = this;
 			url_split = window.location.href.split('/');
 			receipt_id = url_split[4];
-			$.ajax '/api/receipts/' + receipt_id + '.json',
+			$.ajax '/api/receipts/' + receipt_id,
 				success: (res) ->
 					that.receipt = res;
 				error: (res) ->
@@ -36,7 +36,7 @@ items = new Vue({
 			that = this;
 			url_split = window.location.href.split('/');
 			receipt_id = url_split[4];
-			$.ajax '/api/receipts/' + receipt_id + '/items.json',
+			$.ajax '/api/receipts/' + receipt_id + '/items',
 				method: 'POST',
 				data: {
 					item: that.item,
@@ -61,7 +61,7 @@ items = new Vue({
 					that.resetFocus()
 		deleteItem: (receipt_id,item_id) ->
 			that = this;
-			$.ajax '/api/receipts/' + receipt_id + '/items/' + item_id + '.json',
+			$.ajax '/api/receipts/' + receipt_id + '/items/' + item_id,
 				method: 'DELETE',
 				success: (res) ->
 					that.$notify({
@@ -79,7 +79,7 @@ items = new Vue({
 					});
 		updateItem: (item_obj) ->
 			that = this;
-			$.ajax '/api/receipts/' + item_obj.receipt_id + '/items/' + item_obj.id + '.json',
+			$.ajax '/api/receipts/' + item_obj.receipt_id + '/items/' + item_obj.id,
 				method: 'PUT',
 				data: {
 					item: item_obj,
