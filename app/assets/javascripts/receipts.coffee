@@ -9,7 +9,7 @@ receipts = new Vue({
 	methods: {
 		fetchReceipts: ->
 			that = this;
-			$.ajax '/api/receipts.json',
+			$.ajax '/api/receipts',
 				success: (res) ->
 					that.receipts = []
 					that.receipts.push.apply(that.receipts,[{}]);
@@ -18,7 +18,7 @@ receipts = new Vue({
 					that.errors = res.responseJSON.errors
 		addReceipt: ->
 			that = this;
-			$.ajax '/api/receipts.json',
+			$.ajax '/api/receipts',
 				method: 'POST',
 				data: {
 					receipt: that.receipt,
@@ -40,7 +40,7 @@ receipts = new Vue({
 					});
 		deleteReceipt: (receipt_id) ->
 			that = this;
-			$.ajax '/api/receipts/' + receipt_id + '.json',
+			$.ajax '/api/receipts/' + receipt_id,
 				method: 'DELETE',
 				success: (res) ->
 					that.$notify({
@@ -58,7 +58,7 @@ receipts = new Vue({
 		
 		updateReceipt: (receipt_obj) ->
 			that = this;
-			$.ajax '/api/receipts/' + receipt_obj.id + '.json',
+			$.ajax '/api/receipts/' + receipt_obj.id,
 				method: 'PUT',
 				data: {
 					receipt: receipt_obj,
