@@ -1,20 +1,17 @@
-<h2>
-  <strong>Store:</strong>
-  <%= @receipt.store %>
-  <strong>Purchase date:</strong>
-  <%= @receipt.purchase_date %>
-  <strong>Tax:</strong>
-  <%= @receipt.tax %>
-  <strong>Total:</strong>
-  <%= @receipt.total %>
-</h2>
-
-
-<h1>Items</h1>
-
-<%= link_to 'Receipts', receipts_path %>
-
 <div id="items">
+	<h2>
+	  <strong>Store:</strong>
+	  {{ receipt.store }}
+	  <strong>Purchase date:</strong>
+	  {{ receipt.purchase_date }}
+	  <strong>Tax:</strong>
+	  {{ receipt.tax }}
+	  <strong>Total:</strong>
+	  {{ receipt.total }}
+	</h2>
+	<h3>Items</h3>
+
+	<%= link_to 'Receipts', receipts_path %>
 	<%= render 'items/item_template' %>
 	<div>{{ receipt.subtotal }}</div>
 	<div>{{ receipt.tax }}</div>
