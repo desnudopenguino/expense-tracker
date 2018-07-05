@@ -1,4 +1,4 @@
-class ItemsController < ApplicationController
+class Api::ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :update, :destroy]
   before_action :set_receipt
   before_action :receipt_items, only: [:index, :create, :update, :destroy]
