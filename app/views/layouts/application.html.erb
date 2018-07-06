@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-	<meta charset="UTF-8">
-    <title>Receipts</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+	<head>
+		<meta charset="UTF-8">
+		<title>Receipts</title>
+		<%= csrf_meta_tags %>
+		<%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-	<script
-	  src="https://code.jquery.com/jquery-3.3.1.min.js"
-	  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-	  crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/element-ui@2.4.2/lib/index.js"></script>
-    <%# javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<script
+		src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/vue"></script>
+		<script src="https://unpkg.com/element-ui"></script>
+		<script src="https://unpkg.com/element-ui/lib/umd/locale/en.js"></script>
+		<script>
+			ELEMENT.locale(ELEMENT.lang.en)
+		</script>
+		<% javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	</head>
 
-  <body>
-    <%= yield %>
-	<%= javascript_include_tag 'application' %>
-  </body>
+	<body>
+		<%= yield %>
+		<%= javascript_include_tag 'application' %>
+	</body>
 </html>
