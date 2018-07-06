@@ -29,8 +29,7 @@ receipts = new Vue({
 						title: 'Receipt Added',
 						type: 'success'
 					});
-					that.receipts.push(res);
-					that.receipt = {}
+					window.location.href = '/receipts/' + res.id
 				error: (res) ->
 					that.errors = res.responseJSON.errors
 					that.$notify({
