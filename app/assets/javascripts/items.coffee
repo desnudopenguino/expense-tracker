@@ -3,15 +3,15 @@ items = new Vue({
 	data: {
 		items:[],
 		item: {},
-		receipt: {}
+		receipt: {},
+		visible2: false
 	},
 	mounted: ->
 		this.fetchItems()
 		this.fetchReceipt()
 	methods: {
 		resetFocus: ->
-			input = document.getElementsByTagName("input")[0]
-			input.focus()	
+			document.getElementsByTagName("input")[0].focus()
 		fetchItems: ->
 			that = this;
 			url_split = window.location.href.split('/');
@@ -19,13 +19,13 @@ items = new Vue({
 			$.ajax '/api/receipts/' + receipt_id + '/items',
 				success: (res) ->
 					that.items = []
-					that.items.push.apply(that.items,[{}]);
-					that.items.push.apply(that.items,res);
+					that.items.push.apply(that.items,[{}])
+					that.items.push.apply(that.items,res)
 				error: (res) ->
 					that.errors = res.responseJSON.errors
 		fetchReceipt: ->
 			that = this;
-			url_split = window.location.href.split('/');
+			url_split = window.location.href.split('/')
 			receipt_id = url_split[4];
 			$.ajax '/api/receipts/' + receipt_id,
 				success: (res) ->
@@ -34,8 +34,8 @@ items = new Vue({
 					that.errors = res.responseJSON.errors
 		addItem: ->
 			that = this;
-			url_split = window.location.href.split('/');
-			receipt_id = url_split[4];
+			url_split = window.location.href.split('/')
+			receipt_id = url_split[4]
 			$.ajax '/api/receipts/' + receipt_id + '/items',
 				method: 'POST',
 				data: {
@@ -47,7 +47,7 @@ items = new Vue({
 						title: 'Item Added',
 						type: 'success'
 					});
-					that.items.push(res);
+					that.items.push(res)
 					that.item = {}
 					that.resetFocus()
 					that.fetchReceipt()
@@ -68,7 +68,7 @@ items = new Vue({
 						title: 'Item Removed',
 						type: 'success'
 					});
-					that.fetchItems();
+					that.fetchItems()
 					that.fetchReceipt()
 				error: (res) ->
 					that.errors = res.responseJSON.errors
