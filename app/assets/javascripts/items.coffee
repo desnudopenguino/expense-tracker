@@ -12,9 +12,9 @@ items = new Vue({
 		resetFocus: ->
 			document.getElementsByTagName("input")[0].focus()
 		fetchItems: ->
-			that = this;
-			url_split = window.location.href.split('/');
-			receipt_id = url_split[4];
+			that = this
+			url_split = window.location.href.split('/')
+			receipt_id = url_split[4]
 			$.ajax '/api/receipts/' + receipt_id + '/items',
 				success: (res) ->
 					that.items = []
@@ -25,16 +25,16 @@ items = new Vue({
 				error: (res) ->
 					that.errors = res.responseJSON.errors
 		fetchReceipt: ->
-			that = this;
+			that = this
 			url_split = window.location.href.split('/')
-			receipt_id = url_split[4];
+			receipt_id = url_split[4]
 			$.ajax '/api/receipts/' + receipt_id,
 				success: (res) ->
-					that.receipt = res;
+					that.receipt = res
 				error: (res) ->
 					that.errors = res.responseJSON.errors
 		addItem: ->
-			that = this;
+			that = this
 			url_split = window.location.href.split('/')
 			receipt_id = url_split[4]
 			$.ajax '/api/receipts/' + receipt_id + '/items',
@@ -47,7 +47,7 @@ items = new Vue({
 					that.$notify({
 						title: 'Item Added',
 						type: 'success'
-					});
+					})
 					that.items.push(res)
 					that.item = {}
 					that.resetFocus()
@@ -58,17 +58,17 @@ items = new Vue({
 						title: 'Error',
 						message: 'Please check the form fields',
 						type: 'error'
-					});
+					})
 					that.resetFocus()
 		deleteItem: (receipt_id,item_id) ->
-			that = this;
+			that = this
 			$.ajax '/api/receipts/' + receipt_id + '/items/' + item_id,
 				method: 'DELETE',
 				success: (res) ->
 					that.$notify({
 						title: 'Item Removed',
 						type: 'success'
-					});
+					})
 					that.fetchItems()
 					that.fetchReceipt()
 				error: (res) ->
@@ -77,9 +77,9 @@ items = new Vue({
 						title: 'Error',
 						message: 'Something went wrong',
 						type: 'error'
-					});
+					})
 		updateItem: (item_obj) ->
-			that = this;
+			that = this
 			$.ajax '/api/receipts/' + item_obj.receipt_id + '/items/' + item_obj.id,
 				method: 'PUT',
 				data: {
@@ -89,7 +89,7 @@ items = new Vue({
 					that.$notify({
 						title: 'Item Updated',
 						type: 'success'
-					});
+					})
 					that.errors = {}
 					that.fetchItems()
 					that.fetchReceipt()
@@ -99,6 +99,6 @@ items = new Vue({
 						title: 'Error',
 						message: 'Something went wrong',
 						type: 'error'
-					});
+					})
 	}
-});
+})
