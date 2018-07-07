@@ -4,7 +4,6 @@ items = new Vue({
 		items:[],
 		item: {},
 		receipt: {},
-		visible2: false
 	},
 	mounted: ->
 		this.fetchItems()
@@ -19,6 +18,8 @@ items = new Vue({
 			$.ajax '/api/receipts/' + receipt_id + '/items',
 				success: (res) ->
 					that.items = []
+					for k,v of res
+						res[k].showdelete = false
 					that.items.push.apply(that.items,[{}])
 					that.items.push.apply(that.items,res)
 				error: (res) ->
