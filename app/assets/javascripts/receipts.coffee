@@ -12,6 +12,8 @@ receipts = new Vue({
 			$.ajax '/api/receipts',
 				success: (res) ->
 					that.receipts = []
+					for k,v of res
+						res[k].showdelete = false
 					that.receipts.push.apply(that.receipts,[{}])
 					that.receipts.push.apply(that.receipts,res)
 				error: (res) ->
