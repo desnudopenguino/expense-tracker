@@ -65,11 +65,12 @@
 							<el-popover
 								placement="top"
 								width="160"
-								v-model="visible2">
+								v-model="props.row.showdelete"
+								>
 								<p>Delete this item?</p>
 								<div style="text-align: right; margin: 0;">
-									<el-button size="mini" type="text" @click="visible2 = false">cancel</el-button>
-									<el-button size="mini" type="text" @click="deleteItem(props.row.receipt_id,props.row.id)">confirm</el-button>
+									<el-button size="mini" type="info" plain @click="props.row.showdelete = false">cancel</el-button>
+									<el-button size="mini" type="danger" plain @click="deleteItem(props.row.receipt_id,props.row.id)">delete</el-button>
 								</div>
 								<el-button slot="reference" class="el-button el-button--danger el-icon-delete" type="button"></el-button>
 							</el-popover>
