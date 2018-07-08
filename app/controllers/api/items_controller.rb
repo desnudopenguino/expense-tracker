@@ -1,5 +1,5 @@
 class Api::ItemsController < ApplicationController
-	before_action :set_item, only: [:update, :destroy]
+	before_action :set_item, only: [:update, :destroy, :show]
 	before_action :set_receipt
 	before_action :receipt_items, only: [:index]
 
@@ -9,6 +9,11 @@ class Api::ItemsController < ApplicationController
 		render :json => @items.to_json(methods: [:total_cost])
 	end
 
+	# GET /items/1
+	# GET /items/1.json
+	def show
+		render :json => @item.to_json(methods: [:total_cost])
+	end
 	# POST /items
 	# POST /items.json
 	def create
