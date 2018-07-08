@@ -1,6 +1,25 @@
 <template>
 	<el-row :gutter="20">
 		<el-col :span="16" :offset="4">
+			<h1>Items</h1>
+			<h2>
+			  <strong>Store:</strong>
+			  {{ receipt.store }}
+			  <strong>Purchase date:</strong>
+			  {{ receipt.purchase_date }}
+			  <strong>Tax:</strong>
+			  {{ receipt.tax }}
+			  <strong>Total:</strong>
+			  {{ receipt.total }}
+			</h2>
+			<p>
+				{{ receipt.subtotal }} (subtotal)
+				+ {{ receipt.tax }} (tax)
+				= {{ receipt.total }} (total)
+				<span v-if="receipt.check_total">Valid!</span>
+				<span v-else>Invalid!</span>
+			</p>
+			<%= link_to 'Receipts', receipts_path, class: "el-button el-button--primary" %>
 			<el-table
 				:data="items"
 				stripe
