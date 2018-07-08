@@ -62,7 +62,7 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 
   # Json Helper
-  config.include Requests::JsonHelpers, type: :request
+  config.include Requests::JsonHelpers, type: :controller
 end
 
 Shoulda::Matchers.configure do |config|
