@@ -8,7 +8,7 @@ FactoryBot.define do
 	end
 	factory :receipt do
 		purchase_date	'2018-01-01 00:00:00'
-		store		"Awesome Story"
+		store		"Awesome Store"
 		tax 		2.85
 		total 		38.55
 		factory :receipt_with_items do
