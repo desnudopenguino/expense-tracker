@@ -29,7 +29,8 @@ receipts = new Vue({
 					that.errors = {}
 					that.$notify({
 						title: 'Receipt Added',
-						type: 'success'
+						type: 'success',
+						position: 'bottom-left'
 					})
 					window.location.href = '/receipts/' + res.id
 				error: (res) ->
@@ -37,7 +38,8 @@ receipts = new Vue({
 					that.$notify({
 						title: 'Error',
 						message: 'Please check the form fields',
-						type: 'error'
+						type: 'error',
+						position: 'bottom-left'
 					})
 		deleteReceipt: (receipt_id) ->
 			that = this
@@ -46,7 +48,8 @@ receipts = new Vue({
 				success: (res) ->
 					that.$notify({
 						title: 'Receipt Removed',
-						type: 'success'
+						type: 'success',
+						position: 'bottom-left'
 					})
 					that.fetchReceipts()
 				error: (res) ->
@@ -54,7 +57,8 @@ receipts = new Vue({
 					that.$notify({
 						title: 'Error',
 						message: 'Something went wrong',
-						type: 'error'
+						type: 'error',
+						position: 'bottom-left'
 					})
 		
 		updateReceipt: (receipt_obj) ->
@@ -67,7 +71,8 @@ receipts = new Vue({
 				success: (res) ->
 					that.$notify({
 						title: 'Receipt Updated',
-						type: 'success'
+						type: 'success',
+						position: 'bottom-left'
 					})
 					that.errors = {}
 				error: (res) ->
@@ -75,7 +80,8 @@ receipts = new Vue({
 					that.$notify({
 						title: 'Error',
 						message: 'Something went wrong',
-						type: 'error'
+						type: 'error',
+						position: 'bottom-left'
 					})
 			
 		viewReceipt: (receipt_id) ->

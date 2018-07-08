@@ -1,0 +1,76 @@
+$background:	#282a36;
+$currentline:	#44475a;
+$foreground:	#f8f8f2;
+$selection:	#44475a;
+$comment:	#6272a4;	
+$cyan:		#8be9fd;
+$green:		#50fa7b;
+$orange:	#ffb86c;
+$pink:		#ff79c6;
+$purple:	#bd93f9;
+$red:		#ff5555;
+$yellow:	#f1fa8c;
+body {
+	background-color: $background !important;
+	color: $foreground !important;
+}
+
+.el-button--info {
+	background-color: $purple !important;
+	border-color: $purple !important;
+	color: $background !important;
+}
+
+.el-button--primary {
+	background-color: $cyan !important;
+	border-color: $cyan !important;
+	color: $background !important;
+}
+
+.el-button--success {
+	background-color: $green !important;
+	border-color: $green !important;
+	color: $background !important;
+}
+
+.el-button--danger {
+	background-color: $red !important;
+	border-color: $red !important;
+	color: $background !important;
+}
+
+.el-table {
+	background-color: $background !important;
+	th,tr {
+		background-color: $background !important;
+		color: $foreground !important;
+	}
+	tr.el-table__row.hover-row td {
+		background-color: $comment !important;
+	}
+	tr.el-table__row--striped td {
+		background-color: $currentline !important;
+		color: $foreground !important;
+	}
+	tr.el-table__row--striped.hover-row td {
+		background-color: $comment !important;
+	}
+}
+
+.el-icon-success {
+	color: $green !important;
+}
+
+.el-icon-error {
+	color: $red !important;
+}
+
+.el-notification {
+	color: $foreground !important;
+	background-color: $comment !important;
+	border: 1px solid $selection !important;
+}
+
+.el-notification__title, .el-notification__content, .el-icon-close {
+	color: $foreground !important;
+}

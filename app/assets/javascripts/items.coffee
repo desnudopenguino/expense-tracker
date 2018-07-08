@@ -46,7 +46,8 @@ items = new Vue({
 					that.errors = {}
 					that.$notify({
 						title: 'Item Added',
-						type: 'success'
+						type: 'success',
+						position: 'bottom-left'
 					})
 					that.items.push(res)
 					that.item = {}
@@ -57,7 +58,8 @@ items = new Vue({
 					that.$notify({
 						title: 'Error',
 						message: 'Please check the form fields',
-						type: 'error'
+						type: 'error',
+						position: 'bottom-left'
 					})
 					that.resetFocus()
 		deleteItem: (receipt_id,item_id) ->
@@ -67,7 +69,8 @@ items = new Vue({
 				success: (res) ->
 					that.$notify({
 						title: 'Item Removed',
-						type: 'success'
+						type: 'success',
+						position: 'bottom-left'
 					})
 					that.fetchItems()
 					that.fetchReceipt()
@@ -76,7 +79,8 @@ items = new Vue({
 					that.$notify({
 						title: 'Error',
 						message: 'Something went wrong',
-						type: 'error'
+						type: 'error',
+						position: 'bottom-left'
 					})
 		updateItem: (item_obj) ->
 			that = this
@@ -88,7 +92,8 @@ items = new Vue({
 				success: (res) ->
 					that.$notify({
 						title: 'Item Updated',
-						type: 'success'
+						type: 'success',
+						position: 'bottom-left'
 					})
 					that.errors = {}
 					that.fetchItems()
@@ -98,7 +103,8 @@ items = new Vue({
 					that.$notify({
 						title: 'Error',
 						message: 'Something went wrong',
-						type: 'error'
+						type: 'error',
+						position: 'bottom-left'
 					})
 	}
 })
