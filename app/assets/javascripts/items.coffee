@@ -4,6 +4,7 @@ items = new Vue({
 		items:[],
 		item: {},
 		receipt: {},
+		loading: true,
 	},
 	mounted: ->
 		this.fetchItems()
@@ -22,6 +23,7 @@ items = new Vue({
 						res[k].showdelete = false
 					that.items.push.apply(that.items,[{}])
 					that.items.push.apply(that.items,res)
+					that.loading = false
 				error: (res) ->
 					that.errors = res.responseJSON.errors
 		fetchReceipt: ->
