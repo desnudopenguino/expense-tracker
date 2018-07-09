@@ -3,6 +3,7 @@ receipts = new Vue({
 	data: {
 		receipts:[],
 		receipt: {},
+		loading: true,
 	},
 	mounted: ->
 		this.fetchReceipts()
@@ -16,6 +17,7 @@ receipts = new Vue({
 						res[k].showdelete = false
 					that.receipts.push.apply(that.receipts,[{}])
 					that.receipts.push.apply(that.receipts,res)
+					that.loading = false
 				error: (res) ->
 					that.errors = res.responseJSON.errors
 		addReceipt: ->
