@@ -1,5 +1,6 @@
 $background:	#282a36;
 $currentline:	#44475a;
+$currentline-alpha:	rgba(68, 71, 90, 0.6);
 $foreground:	#f8f8f2;
 $selection:	#44475a;
 $comment:	#6272a4;	
@@ -121,4 +122,12 @@ body {
 
 .el-notification__title, .el-notification__content, .el-icon-close {
 	color: $foreground !important;
+}
+
+.el-loading-mask {
+	background-color: $currentline-alpha !important;
+}
+
+.el-loading-spinner .path {
+	stroke: $purple !important;
 }
