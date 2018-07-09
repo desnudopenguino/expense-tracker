@@ -4,52 +4,100 @@ $foreground:	#f8f8f2;
 $selection:	#44475a;
 $comment:	#6272a4;	
 $cyan:		#8be9fd;
+$light-cyan:	#b9f1fd;
+$lighter-cyan:	#f3fcfe;
 $green:		#50fa7b;
+$light-green:	#96fcaf;
+$lighter-green:	#edfef1;
 $orange:	#ffb86c;
 $pink:		#ff79c6;
 $purple:	#bd93f9;
+$light-purple:	#d7befb;
+$lighter-purple:	#f8f4fe;
 $red:		#ff5555;
+$light-red:	#ff9999;
+$lighter-red:	#ffeeee;
 $yellow:	#f1fa8c;
 body {
-	background-color: $background !important;
+	background-color: $currentline !important;
 	color: $foreground !important;
+}
+
+.el-popover {
+	background: $foreground !important;
 }
 
 .el-button--info {
 	background-color: $purple !important;
 	border-color: $purple !important;
-	color: $background !important;
+	color: $currentline !important;
+}
+
+.el-button--info.is-plain {
+	background-color: $lighter-purple !important;
+	border-color: $purple !important;
+	color: $purple !important;
+}
+
+.el-button--info:focus, .el-button--info:hover {
+	background-color: $light-purple !important;
+	border-color: $light-purple !important;
+	color: $currentline !important;
 }
 
 .el-button--primary {
 	background-color: $cyan !important;
 	border-color: $cyan !important;
-	color: $background !important;
+	color: $currentline  !important;
+}
+
+.el-button--primary:focus, .el-button--primary:hover {
+	background-color: $light-cyan !important;
+	border-color: $light-cyan !important;
+	color: $currentline !important;
 }
 
 .el-button--success {
 	background-color: $green !important;
 	border-color: $green !important;
-	color: $background !important;
+	color: $currentline !important;
+}
+
+.el-button--success:focus, .el-button--success:hover {
+	background-color: $light-green !important;
+	border-color: $light-green !important;
+	color: $currentline !important;
 }
 
 .el-button--danger {
 	background-color: $red !important;
 	border-color: $red !important;
-	color: $background !important;
+	color: $currentline !important;
+}
+
+.el-button--danger.is-plain {
+	background-color: $lighter-red !important;
+	border-color: $red !important;
+	color: $red !important;
+}
+
+.el-button--danger:focus, .el-button--danger:hover {
+	background-color: $light-red !important;
+	border-color: $light-red !important;
+	color: $currentline !important;
 }
 
 .el-table {
-	background-color: $background !important;
+	background-color: $currentline !important;
 	th,tr {
-		background-color: $background !important;
+		background-color: $currentline !important;
 		color: $foreground !important;
 	}
 	tr.el-table__row.hover-row td {
 		background-color: $comment !important;
 	}
 	tr.el-table__row--striped td {
-		background-color: $currentline !important;
+		background-color: $background !important;
 		color: $foreground !important;
 	}
 	tr.el-table__row--striped.hover-row td {
@@ -68,7 +116,7 @@ body {
 .el-notification {
 	color: $foreground !important;
 	background-color: $comment !important;
-	border: 1px solid $selection !important;
+	border: 1px solid $background !important;
 }
 
 .el-notification__title, .el-notification__content, .el-icon-close {
