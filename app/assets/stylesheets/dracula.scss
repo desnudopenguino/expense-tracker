@@ -1,6 +1,6 @@
 $background:	#282a36;
 $currentline:	#44475a;
-$currentline-alpha:	rgba(68, 71, 90, 0.6);
+$currentline-alpha:	rgba(68, 71, 90, 0.8);
 $foreground:	#f8f8f2;
 $selection:	#44475a;
 $comment:	#6272a4;	
@@ -130,9 +130,15 @@ body {
 
 .el-loading-spinner .path {
 	stroke: $purple !important;
+	stroke-width: 4 !important;
 }
 
 .el-input__inner {
 	background-color: $foreground !important;
 	color: $background !important;
+}
+
+.el-loading-text {
+	font-size: 20px !important;
+	color: $purple !important;
 }
