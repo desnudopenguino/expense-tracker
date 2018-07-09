@@ -6,6 +6,7 @@
 				:data="receipts"
 				:default-sort = "{prop: 'purchase_date', order: 'ascending'}"
 				v-loading="loading"
+				element-loading-text="loading..."
 				stripe
 				style="width: 100%">
 				<el-table-column
