@@ -5,24 +5,38 @@ $selection:	#44475a;
 $comment:	#6272a4;	
 $cyan:		#8be9fd;
 $light-cyan:	#b9f1fd;
+$lighter-cyan:	#f3fcfe;
 $green:		#50fa7b;
 $light-green:	#96fcaf;
+$lighter-green:	#edfef1;
 $orange:	#ffb86c;
 $pink:		#ff79c6;
 $purple:	#bd93f9;
 $light-purple:	#d7befb;
+$lighter-purple:	#f8f4fe;
 $red:		#ff5555;
 $light-red:	#ff9999;
+$lighter-red:	#ffeeee;
 $yellow:	#f1fa8c;
 body {
 	background-color: $currentline !important;
 	color: $foreground !important;
 }
 
+.el-popover {
+	background: $foreground !important;
+}
+
 .el-button--info {
 	background-color: $purple !important;
 	border-color: $purple !important;
 	color: $currentline !important;
+}
+
+.el-button--info.is-plain {
+	background-color: $lighter-purple !important;
+	border-color: $purple !important;
+	color: $purple !important;
 }
 
 .el-button--info:focus, .el-button--info:hover {
@@ -59,6 +73,12 @@ body {
 	background-color: $red !important;
 	border-color: $red !important;
 	color: $currentline !important;
+}
+
+.el-button--danger.is-plain {
+	background-color: $lighter-red !important;
+	border-color: $red !important;
+	color: $red !important;
 }
 
 .el-button--danger:focus, .el-button--danger:hover {
