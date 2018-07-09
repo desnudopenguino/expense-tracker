@@ -69,7 +69,7 @@
 									<el-button size="mini" type="info" plain @click="props.row.showdelete = false">cancel</el-button>
 									<el-button size="mini" type="danger" plain @click="deleteReceipt(props.row.id)">delete</el-button>
 								</div>
-								<el-button slot="reference"  class="el-button el-button--danger el-icon-delete" type="button"></button>
+								<el-button slot="reference" @click="props.row.showdelete = true" class="el-button el-button--danger el-icon-delete" type="button"></button>
 							</el-popover>
 						</el-button-group>
 						<el-button-group v-else>
