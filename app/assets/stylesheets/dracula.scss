@@ -131,3 +131,8 @@ body {
 .el-loading-spinner .path {
 	stroke: $purple !important;
 }
+
+.el-input__inner {
+	background-color: $foreground !important;
+	color: $background !important;
+}
