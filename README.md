@@ -8,6 +8,9 @@ This is a simple CRUD web application to collect receipt info for tracking expen
 - rails 5.2.0
 - node
 - yarn
+	- coffee-loader
+        - coffeescript
+        - element-ui
 - (more to come as I complete this README)
 
 ### Notes
