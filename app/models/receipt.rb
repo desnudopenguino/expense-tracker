@@ -15,6 +15,6 @@ class Receipt < ApplicationRecord
 		items.each do |item|
 			subtotal += item.total_cost
 		end
-		return subtotal
+		return subtotal.round(2)
 	end
 end
