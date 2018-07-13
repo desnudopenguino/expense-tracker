@@ -3,14 +3,9 @@
 		<el-col :span="16" :offset="4">
 			<h1>Items</h1>
 			<h2>
-			  <strong>Store:</strong>
-			  {{ receipt.store }}
-			  <strong>Purchase date:</strong>
-			  {{ receipt.purchase_date }}
-			  <strong>Tax:</strong>
-			  {{ receipt.tax }}
-			  <strong>Total:</strong>
-			  {{ receipt.total }}
+			  Store: {{ receipt.store }}
+			  <span style="float: right;">Purchase date:
+			  {{ receipt.purchase_date }}</span>
 			</h2>
 			<p>
 				{{ receipt.subtotal }} (subtotal)
@@ -19,7 +14,7 @@
 				<span v-if="receipt.check_total">Valid!</span>
 				<span v-else>Invalid!</span>
 			</p>
-			<%= link_to 'Receipts', receipts_path, class: "el-button el-button--primary" %>
+			<a href="/" class="el-button el-button--primary" type="button">receipts</a>
 			<el-table
 				:data="items"
 				v-loading="loading"
