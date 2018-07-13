@@ -117,6 +117,7 @@ export default {
 	mounted: ->
 		this.fetchItems()
 		this.fetchReceipt()
+		console.log(document.getElementsByName("csrf-token")[0].content)
 	methods: {
 		resetFocus: ->
 			document.getElementsByTagName("input")[0].focus()
@@ -151,6 +152,7 @@ export default {
 				method: 'POST',
 				data: {
 					item: that.item,
+					authenticity_token: document.getElementsByName("csrf-token")[0].content,
 				},
 				success: (res) ->
 					that.errors = {}
@@ -176,6 +178,9 @@ export default {
 			that = this
 			$.ajax '/api/receipts/' + receipt_id + '/items/' + item_id,
 				method: 'DELETE',
+				data: {
+					authenticity_token: document.getElementsByName("csrf-token")[0].content,
+				},
 				success: (res) ->
 					that.$notify({
 						title: 'Item Removed',
@@ -198,6 +203,7 @@ export default {
 				method: 'PUT',
 				data: {
 					item: item_obj,
+					authenticity_token: document.getElementsByName("csrf-token")[0].content,
 				},
 				success: (res) ->
 					that.$notify({
