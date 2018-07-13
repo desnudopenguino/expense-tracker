@@ -1,3 +1,4 @@
-<div id="receipts">
-  <%= render 'receipts/receipt_template' %>
+<div data-behavior="vue">
+	<receipts-view></receipts-view>
 </div>
+<%= javascript_pack_tag 'receipts' %>
