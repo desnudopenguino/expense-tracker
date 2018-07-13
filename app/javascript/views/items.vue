@@ -3,9 +3,8 @@
 		<el-col :span="16" :offset="4">
 			<h1>Items</h1>
 			<h2>
-			  Store: {{ receipt.store }}
-			  <span style="float: right;">Purchase date:
-			  {{ receipt.purchase_date }}</span>
+			  {{ receipt.store }}
+			  <span style="float: right;">{{ receipt.purchase_date }}</span>
 			</h2>
 			<p>
 				{{ receipt.subtotal }} (subtotal)
