@@ -112,6 +112,7 @@ export default {
 			$.ajax '/api/receipts',
 				method: 'POST',
 				data: {
+					authenticity_token: document.getElementsByName("csrf-token")[0].content,
 					receipt: that.receipt,
 				},
 				success: (res) ->
@@ -134,6 +135,9 @@ export default {
 			that = this
 			$.ajax '/api/receipts/' + receipt_id,
 				method: 'DELETE',
+				data: {
+					authenticity_token: document.getElementsByName("csrf-token")[0].content,
+				},
 				success: (res) ->
 					that.$notify({
 						title: 'Receipt Removed',
@@ -156,6 +160,7 @@ export default {
 				method: 'PUT',
 				data: {
 					receipt: receipt_obj,
+					authenticity_token: document.getElementsByName("csrf-token")[0].content,
 				},
 				success: (res) ->
 					that.$notify({
