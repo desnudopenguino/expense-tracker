@@ -11,6 +11,7 @@ This is a simple CRUD web application to collect receipt info for tracking expen
 	- coffee-loader
         - coffeescript
         - element-ui
+	- vue-turbolinks
 - (more to come as I complete this README)
 
 ### Notes
