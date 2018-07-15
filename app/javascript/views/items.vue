@@ -104,7 +104,7 @@ export default {
 	data: ->
 		({
 			items:[],
-			item: {},
+			item: { 'qty': 1},
 			receipt: {},
 			loading: true,
 		})
@@ -156,7 +156,7 @@ export default {
 						position: 'bottom-left'
 					})
 					that.items.push(res)
-					that.item = {}
+					that.item = { 'qty': 1 }
 					that.resetFocus()
 					that.fetchReceipt()
 				error: (res) ->
