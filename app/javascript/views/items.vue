@@ -111,7 +111,6 @@ export default {
 	mounted: ->
 		this.fetchItems()
 		this.fetchReceipt()
-		console.log(document.getElementsByName("csrf-token")[0].content)
 	methods: {
 		resetFocus: ->
 			document.getElementsByTagName("input")[0].focus()
