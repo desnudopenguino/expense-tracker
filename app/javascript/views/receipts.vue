@@ -178,10 +178,6 @@ export default {
 						type: 'error',
 						position: 'bottom-left'
 					})
-			
-		viewReceipt: (receipt_id) ->
-			that=this
-			window.location.href = '/receipts/' + receipt_id
 	}
 }
 </script>
