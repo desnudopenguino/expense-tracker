@@ -59,7 +59,7 @@
 					width="220">
 					<template slot-scope="props">
 						<el-button-group v-if="props.row.id != undefined">
-							<el-button @click="viewReceipt(props.row.id)" class="el-button el-button--info el-icon-tickets" type="button"></el-button>
+							<a :href="props.row.path" class="el-button el-button--info el-icon-tickets" type="button"></a>
 							<el-button @click="updateReceipt(props.row)" class="el-button el-button--primary el-icon-edit" type="button"></el-button>
 							<el-popover
 								placement="top"
@@ -102,6 +102,7 @@ export default {
 					that.receipts = []
 					for k,v of res
 						res[k].showdelete = false
+						res[k].path = "/receipts/"+res[k].id
 					that.receipts.push.apply(that.receipts,[{}])
 					that.receipts.push.apply(that.receipts,res)
 					that.loading = false
