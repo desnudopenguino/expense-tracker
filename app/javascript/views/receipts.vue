@@ -59,7 +59,7 @@
 					width="220">
 					<template slot-scope="props">
 						<el-button-group v-if="props.row.id != undefined">
-							<el-button @click="viewReceipt(props.row.id)" class="el-button el-button--info el-icon-tickets" type="button"></el-button>
+							<a :href="props.row.path" class="el-button el-button--info el-icon-tickets" type="button"></a>
 							<el-button @click="updateReceipt(props.row)" class="el-button el-button--primary el-icon-edit" type="button"></el-button>
 							<el-popover
 								placement="top"
@@ -85,7 +85,7 @@
 	</el-row>
 </template>
 <script lang="coffee">
-export default {
+export default
 	data: ->
 		({
 			receipts:[],
@@ -94,7 +94,7 @@ export default {
 		})
 	mounted: ->
 		this.fetchReceipts()
-	methods: {
+	methods: 
 		fetchReceipts: ->
 			that = this
 			$.ajax '/api/receipts',
@@ -102,6 +102,7 @@ export default {
 					that.receipts = []
 					for k,v of res
 						res[k].showdelete = false
+						res[k].path = "/receipts/"+res[k].id
 					that.receipts.push.apply(that.receipts,[{}])
 					that.receipts.push.apply(that.receipts,res)
 					that.loading = false
@@ -120,9 +121,10 @@ export default {
 					that.$notify({
 						title: 'Receipt Added',
 						type: 'success',
+						dangerouslyUseHTMLString: true,
+						message: '<a href="/receipts/'+res.id+'" class="el-button el-button--info el-button--small is-plain">View Receipt</a>'
 						position: 'bottom-left'
 					})
-					window.location.href = '/receipts/' + res.id
 				error: (res) ->
 					that.errors = res.responseJSON.errors
 					that.$notify({
@@ -177,10 +179,4 @@ export default {
 						type: 'error',
 						position: 'bottom-left'
 					})
-			
-		viewReceipt: (receipt_id) ->
-			that=this
-			window.location.href = '/receipts/' + receipt_id
-	}
-}
 </script>

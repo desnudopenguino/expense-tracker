@@ -7,11 +7,14 @@
 		<%= csp_meta_tag %>
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+		<% if content_for? :webpacks %>
+			<%= yield :webpacks %>
+		<% end %>
 	</head>
 	<body>
-		<div data-behavior="vue">
+		<div id="vue-app">
 			<%= yield %>
 		</div>
-		<%= yield :webpacks %>
 	</body>
 </html>
