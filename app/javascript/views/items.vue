@@ -13,7 +13,7 @@
 				<span v-if="receipt.check_total">Valid!</span>
 				<span v-else>Invalid!</span>
 			</p>
-			<a href="/" class="el-button el-button--primary" type="button">receipts</a>
+			<a href="/receipts" class="el-button el-button--primary" type="button">receipts</a>
 			<el-table
 				:data="items"
 				v-loading="loading"
