@@ -100,7 +100,7 @@
 	</el-row>
 </template>
 <script lang="coffee">
-export default {
+export default
 	data: ->
 		({
 			items:[],
@@ -111,7 +111,7 @@ export default {
 	mounted: ->
 		this.fetchItems()
 		this.fetchReceipt()
-	methods: {
+	methods:
 		resetFocus: ->
 			document.getElementsByTagName("input")[0].focus()
 		fetchItems: ->
@@ -215,6 +215,4 @@ export default {
 						type: 'error',
 						position: 'bottom-left'
 					})
-	}
-}
 </script>
