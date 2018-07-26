@@ -121,9 +121,10 @@ export default {
 					that.$notify({
 						title: 'Receipt Added',
 						type: 'success',
+						dangerouslyUseHTMLString: true,
+						message: '<a href="/receipts/'+res.id+'" class="el-button el-button--info el-button--small is-plain">View Receipt</a>'
 						position: 'bottom-left'
 					})
-					window.location.href = '/receipts/' + res.id
 				error: (res) ->
 					that.errors = res.responseJSON.errors
 					that.$notify({
