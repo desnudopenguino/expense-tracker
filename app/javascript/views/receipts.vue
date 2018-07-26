@@ -85,7 +85,7 @@
 	</el-row>
 </template>
 <script lang="coffee">
-export default {
+export default
 	data: ->
 		({
 			receipts:[],
@@ -94,7 +94,7 @@ export default {
 		})
 	mounted: ->
 		this.fetchReceipts()
-	methods: {
+	methods: 
 		fetchReceipts: ->
 			that = this
 			$.ajax '/api/receipts',
@@ -179,6 +179,4 @@ export default {
 						type: 'error',
 						position: 'bottom-left'
 					})
-	}
-}
 </script>
