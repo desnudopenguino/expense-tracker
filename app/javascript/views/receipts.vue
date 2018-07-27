@@ -1,5 +1,5 @@
 <template>
-	<el-row :gutter="20">
+	<el-row>
 		<el-col :span="16" :offset="4">
 			<h1>Receipts</h1>
 			<el-table
