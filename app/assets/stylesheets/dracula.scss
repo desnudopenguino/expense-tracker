@@ -94,15 +94,42 @@ body {
 		background-color: $currentline !important;
 		color: $foreground !important;
 	}
+
 	tr.el-table__row.hover-row td {
 		background-color: $comment !important;
 	}
+	
 	tr.el-table__row--striped td {
 		background-color: $background !important;
 		color: $foreground !important;
 	}
-	tr.el-table__row--striped.hover-row td {
+
+	tr.el-table__row--striped.hover-row td, tr.el-table__row--striped.total-failure.hover-row td {
 		background-color: $comment !important;
+	}
+	
+	.total-failure td {
+		background-color: $orange !important;
+		color: $background !important;
+		font-weight: bold !important;
+	}
+
+	.total-success td {
+		background-color: $light-green !important;
+		color: $background !important;
+		font-weight: bold !important;
+	}
+
+	tr.el-table__row--striped.total-failure td {
+		background-color: $orange !important;
+		color: $background !important;
+		font-weight: bold !important;
+	}
+
+	tr.el-table__row--striped.total-success td {
+		background-color: $light-green !important;
+		color: $background !important;
+		font-weight: bold !important;
 	}
 }
 
@@ -142,3 +169,5 @@ body {
 	font-size: 20px !important;
 	color: $purple !important;
 }
+
+
