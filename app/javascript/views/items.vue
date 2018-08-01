@@ -1,19 +1,33 @@
 <template>
 	<el-row>
 		<el-col :span="16" :offset="4">
+			<a href="/receipts" class="el-button el-button--primary" type="button">receipts</a>
 			<h1>Items</h1>
 			<h2>
 			  {{ receipt.store }}
 			  <span style="float: right;">{{ receipt.purchase_date }}</span>
 			</h2>
-			<p>
-				{{ receipt.subtotal }} (subtotal)
-				+ {{ receipt.tax }} (tax)
-				= {{ receipt.total }} (total)
-				<span v-if="receipt.check_total">Valid!</span>
-				<span v-else>Invalid!</span>
-			</p>
-			<a href="/receipts" class="el-button el-button--primary" type="button">receipts</a>
+			<el-row>
+				<el-col :span="20">
+					<el-table
+						:data="receipt_wrapper"
+						:row-class-name="tableRowClassName"
+						style="width: 60%">
+						<el-table-column
+							prop="subtotal"
+							label="Subtotal">
+						</el-table-column>
+						<el-table-column
+							prop="tax"
+							label="Tax">
+						</el-table-column>
+						<el-table-column
+							prop="total"
+							label="Total">
+						</el-table-column>
+					</el-table>
+				</el-col>
+			</el-row>
 			<el-table
 				:data="items"
 				v-loading="loading"
@@ -107,6 +121,7 @@ export default
 			item: { 'qty': 1},
 			receipt: {},
 			loading: true,
+			receipt_wrapper: []
 		})
 	mounted: ->
 		this.fetchItems()
@@ -123,8 +138,8 @@ export default
 					that.items = []
 					for k,v of res
 						res[k].showdelete = false
-					that.items.push.apply(that.items,[{}])
-					that.items.push.apply(that.items,res)
+					that.items = res
+					that.items.unshift({})
 					that.loading = false
 				error: (res) ->
 					that.errors = res.responseJSON.errors
@@ -135,6 +150,7 @@ export default
 			$.ajax '/api/receipts/' + receipt_id,
 				success: (res) ->
 					that.receipt = res
+					that.receipt_wrapper = [res]
 				error: (res) ->
 					that.errors = res.responseJSON.errors
 		addItem: ->
@@ -154,8 +170,10 @@ export default
 						type: 'success',
 						position: 'bottom-left'
 					})
-					that.items.push(res)
+					that.items.splice(0,1)
+					that.items.unshift(res)
 					that.item = { 'qty': 1 }
+					that.items.unshift(that.item)
 					that.resetFocus()
 					that.fetchReceipt()
 				error: (res) ->
@@ -215,4 +233,9 @@ export default
 						type: 'error',
 						position: 'bottom-left'
 					})
+		tableRowClassName: ({row, rowIndex}) ->
+			if row.check_total
+				return "total-success"
+			else
+				return "total-failure"
 </script>
