@@ -4,7 +4,7 @@
 			<h1>Receipts</h1>
 			<el-table
 				:data="receipts"
-				:default-sort = "{prop: 'purchase_date', order: 'ascending'}"
+				:row-class-name="tableRowClassName"
 				v-loading="loading"
 				element-loading-text="loading..."
 				stripe
@@ -12,7 +12,6 @@
 				<el-table-column
 					prop="purchase_date"
 					label="Purchase Date"
-					sortable
 					width="230">
 					<template slot-scope="scope">
 						<el-date-picker v-if="scope.row.id != undefined" type="datetime" value-format="yyyy-MM-d HH:mm:ss" placeholder="Purchase Date" v-model="scope.row.purchase_date" @keyup.enter.native="updateReceipt(scope.row)">
@@ -125,6 +124,11 @@ export default
 						message: '<a href="/receipts/'+res.id+'" class="el-button el-button--info el-button--small is-plain">View Receipt</a>'
 						position: 'bottom-left'
 					})
+					
+					that.receipts.splice(0,1)
+					that.receipts.unshift(res)
+					that.receipt = {}
+					that.receipts.unshift(that.receipt)
 				error: (res) ->
 					that.errors = res.responseJSON.errors
 					that.$notify({
@@ -179,4 +183,9 @@ export default
 						type: 'error',
 						position: 'bottom-left'
 					})
+		tableRowClassName: ({row, rowIndex}) ->
+			if row.check_total == false
+				return "total-failure"
+			else
+				return ""
 </script>
