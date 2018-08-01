@@ -54,7 +54,7 @@ class Api::ItemsController < ApplicationController
 	end 
 
 	def receipt_items
-		@items = Item.where(receipt_id: params[:receipt_id])
+		@items = Item.where(receipt_id: params[:receipt_id]).order("created_at DESC")
 	end
 
 	# Never trust parameters from the scary internet, only allow the white list through.
