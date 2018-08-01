@@ -4,7 +4,7 @@ class Api::ReceiptsController < ApplicationController
 	# GET /receipts
 	# GET /receipts.json
 	def index
-		render :json => Receipt.all.order(purchase_date: :desc)
+		render :json => Receipt.all.order(created_at: :desc).limit(20).to_json(methods: [:check_total])
 	end
 
 	# GET /receipts/1
