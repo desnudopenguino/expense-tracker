@@ -4,6 +4,10 @@ class Api::ReceiptsController < ApplicationController
 	# GET /receipts
 	# GET /receipts.json
 	def index
+		render :json => Receipt.all.order(created_at: :desc).to_json(methods: [:check_total])
+	end
+
+	def recent
 		render :json => Receipt.all.order(created_at: :desc).limit(20).to_json(methods: [:check_total])
 	end
 
