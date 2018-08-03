@@ -96,6 +96,19 @@ export default
 	methods: 
 		fetchReceipts: ->
 			that = this
+			$.ajax '/api/receipts/recent',
+				success: (res) ->
+					that.receipts = []
+					for k,v of res
+						res[k].showdelete = false
+						res[k].path = "/receipts/"+res[k].id
+					that.receipts.push.apply(that.receipts,[{}])
+					that.receipts.push.apply(that.receipts,res)
+					that.loading = false
+				error: (res) ->
+					that.errors = res.responseJSON.errors
+		fetchAllReceipts: ->
+			that = this
 			$.ajax '/api/receipts',
 				success: (res) ->
 					that.receipts = []
@@ -120,8 +133,6 @@ export default
 					that.$notify({
 						title: 'Receipt Added',
 						type: 'success',
-						dangerouslyUseHTMLString: true,
-						message: '<a href="/receipts/'+res.id+'" class="el-button el-button--info el-button--small is-plain">View Receipt</a>'
 						position: 'bottom-left'
 					})
 					
