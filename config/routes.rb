@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
     namespace :api do
 	    resources :receipts, only: [:index, :show, :create, :update, :destroy] do
+		collection do
+			get 'recent'
+		end
 		resources :items, only: [:index, :show, :create, :update, :destroy]
 	    end
     end
