@@ -125,10 +125,8 @@ export default
 						position: 'bottom-left'
 					})
 					
-					that.receipts.splice(0,1)
-					that.receipts.unshift(res)
 					that.receipt = {}
-					that.receipts.unshift(that.receipt)
+					that.fetchReceipts()
 				error: (res) ->
 					that.errors = res.responseJSON.errors
 					that.$notify({
