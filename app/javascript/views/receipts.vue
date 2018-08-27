@@ -101,6 +101,8 @@ export default
 					that.receipts = []
 					for k,v of res
 						res[k].showdelete = false
+						res[k].tax = res[k].tax.toFixed(2)
+						res[k].total = res[k].total.toFixed(2)
 						res[k].path = "/receipts/"+res[k].id
 					that.receipts.push.apply(that.receipts,[{}])
 					that.receipts.push.apply(that.receipts,res)
