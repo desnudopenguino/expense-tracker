@@ -1,12 +1,8 @@
 <template>
 	<el-row>
 		<el-col :span="16" :offset="4">
-			<a href="/receipts" class="el-button el-button--primary" type="button">receipts</a>
-			<h1>Items</h1>
-			<h2>
-			  {{ receipt.store }}
-			  <span style="float: right;">{{ receipt.purchase_date }}</span>
-			</h2>
+			<h1>
+			  <a href="/receipts" class="link">Receipts</a> &gt; {{ receipt.store }} on {{ receipt.purchase_date }}</h1>
 			<el-row>
 				<el-col :span="20">
 					<el-table
@@ -138,19 +134,30 @@ export default
 					that.items = []
 					for k,v of res
 						res[k].showdelete = false
+						res[k].cost = res[k].cost.toFixed(2)
+						res[k].total_cost = res[k].total_cost.toFixed(2)
 					that.items = res
 					that.items.unshift({})
 					that.loading = false
 				error: (res) ->
 					that.errors = res.responseJSON.errors
-		fetchReceipt: ->
+		fetchReceipt:  (edit) ->
 			that = this
 			url_split = window.location.href.split('/')
 			receipt_id = url_split[4]
 			$.ajax '/api/receipts/' + receipt_id,
 				success: (res) ->
+					res.subtotal = res.subtotal.toFixed(2)
+					res.total = res.total.toFixed(2)
+					res.tax = res.tax.toFixed(2)
 					that.receipt = res
 					that.receipt_wrapper = [res]
+					if edit == 1 and res.check_total
+						that.$notify({
+							title: 'Receipt Valid',
+							type: 'success',
+							position: 'bottom-left'
+						})
 				error: (res) ->
 					that.errors = res.responseJSON.errors
 		addItem: ->
@@ -175,7 +182,7 @@ export default
 					that.item = { 'qty': 1 }
 					that.items.unshift(that.item)
 					that.resetFocus()
-					that.fetchReceipt()
+					that.fetchReceipt(1)
 				error: (res) ->
 					that.errors = res.responseJSON.errors
 					that.$notify({
@@ -199,7 +206,7 @@ export default
 						position: 'bottom-left'
 					})
 					that.fetchItems()
-					that.fetchReceipt()
+					that.fetchReceipt(1)
 				error: (res) ->
 					that.errors = res.responseJSON.errors
 					that.$notify({
@@ -224,7 +231,7 @@ export default
 					})
 					that.errors = {}
 					that.fetchItems()
-					that.fetchReceipt()
+					that.fetchReceipt(1)
 				error: (res) ->
 					that.errors = res.responseJSON
 					that.$notify({
