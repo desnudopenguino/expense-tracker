@@ -8,7 +8,7 @@
 					<el-table
 						:data="receipt_wrapper"
 						:row-class-name="tableRowClassName"
-						style="width: 60%">
+						style="width: 30%">
 						<el-table-column
 							prop="subtotal"
 							label="Subtotal">
