@@ -4,17 +4,17 @@ class Api::ReceiptsController < ApplicationController
 	# GET /receipts
 	# GET /receipts.json
 	def index
-		render :json => Receipt.all.order(created_at: :desc).to_json(methods: [:check_total])
+		render json: Receipt.all.order(created_at: :desc).to_json(methods: [:check_total])
 	end
 
 	def recent
-		render :json => Receipt.all.order(created_at: :desc).limit(20).to_json(methods: [:check_total])
+		render json: Receipt.all.order(created_at: :desc).limit(20).to_json(methods: [:check_total])
 	end
 
 	# GET /receipts/1
 	# GET /receipts/1.json
 	def show
-		render :json => @receipt.to_json(methods: [:check_total,:subtotal])
+		render json: @receipt.to_json(methods: [:check_total,:subtotal])
 	end
 
 	# POST /receipts
@@ -22,7 +22,7 @@ class Api::ReceiptsController < ApplicationController
 	def create
 		@receipt = Receipt.new(receipt_params)
 		if @receipt.save
-			render :json => @receipt
+			render json: @receipt
 		else
 			render json: @receipt.errors, status: :unprocessable_entity
 		end
@@ -32,7 +32,7 @@ class Api::ReceiptsController < ApplicationController
 	# PATCH/PUT /receipts/1.json
 	def update
 		if @receipt.update(receipt_params)
-			render :json => @receipt
+			render json: @receipt
 		else
 			render json: @receipt.errors, status: :unprocessable_entity
 		end
@@ -53,6 +53,6 @@ class Api::ReceiptsController < ApplicationController
 
 	# Never trust parameters from the scary internet, only allow the white list through.
 	def receipt_params
-		params.require(:receipt).permit(:purchase_date, :store, :tax, :total, 'purchase_date(1i)', 'purchase_date(2i)', 'purchase_date(1i)')
+		params.require(:receipt).permit(:purchase_date, :store, :tax, :total, 'purchase_date(1i)', 'purchase_date(2i)')
 	end
 end
