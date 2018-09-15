@@ -6,13 +6,13 @@ class Api::ItemsController < ApplicationController
 	# GET /items
 	# GET /items.json
 	def index
-		render :json => @items.to_json(methods: [:total_cost])
+		render json: @items.to_json(methods: [:total_cost])
 	end
 
 	# GET /items/1
 	# GET /items/1.json
 	def show
-		render :json => @item.to_json(methods: [:total_cost])
+		render json: @item.to_json(methods: [:total_cost])
 	end
 	# POST /items
 	# POST /items.json
@@ -20,7 +20,7 @@ class Api::ItemsController < ApplicationController
 		@item = Item.new(item_params)
 		@item.receipt = @receipt
 		if @item.save
-			render :json => @item.to_json(methods: [:total_cost])
+			render json: @item.to_json(methods: [:total_cost])
 		else
 			render json: @item.errors, status: :unprocessable_entity
 		end
@@ -30,7 +30,7 @@ class Api::ItemsController < ApplicationController
 	# PATCH/PUT /items/1.json
 	def update
 		if @item.update(item_params)
-			render :json => @item.to_json(methods: [:total_cost])
+			render json: @item.to_json(methods: [:total_cost])
 		else
 			render json: @item.errors, status: :unprocessable_entity
 		end
